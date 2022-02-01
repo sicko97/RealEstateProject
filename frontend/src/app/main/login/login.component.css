@@ -1,0 +1,68 @@
+.background{
+    background-image: url("/assets/high-resolution-new-york-city-skyline-panorama-vast-xl.jpg");
+    background-size:cover;
+    height: 98%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+  .wrapper {
+    display : flex ;
+    justify-content: center;
+    align-items: center;}
+
+    .loginForm {
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin : 50px;
+     
+        max-width: 500px;
+        min-width: 150px;
+        height: 500px;
+        padding : 60px;
+        background-color: white;
+        border-radius: 8px;
+        opacity: 93%;
+       
+    }
+    
+    h1{
+        padding-right: 0px;
+        margin-right: 50px;
+    }
+    p{
+        padding-right: 0px;
+        margin-right : 140px;
+        margin-top: 20px;
+    }
+    
+    .inputText {
+        width: 400px;
+        padding : 10px;
+        opacity: 1;
+    }
+    
+    button { 
+        width : 100px;
+        color : rgb(19, 2, 2);
+        background-color: rgb(212, 211, 211);
+        border :10px;
+        margin : 8px;
+      
+    }
+    
+img{
+    position :absolute;
+    top:40px;
+    left:50px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .error{
+      color : red;
+  }
+  

@@ -1,0 +1,17 @@
+footer{
+    background-color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+
+span{
+    color : white;
+}
+
+.developer{
+    font-weight: bold;
+    font-size: 12pt;
+}

@@ -1,0 +1,35 @@
+<div class="background">
+    <div class='wrapper'>
+        <!-- <img class='logo' src="/assets/outline_maps_home_work_white_24dp.png"> -->
+        <form class='loginForm'  (submit)="onSubmit()" [formGroup]="form">
+            <h1>Add new agency </h1>
+                <mat-form-field >
+                    <mat-label>City</mat-label>
+                    <mat-select name="city" required formControlName="city" (selectionChange)="changeCity($event)">
+                        <mat-option *ngFor="let city of cities" [value]="city.city">
+                          {{city.city}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+                <div *ngIf = "citySelected">
+                <mat-form-field >
+                    <mat-label>Municipality</mat-label>
+                    <mat-select name="municipality" required formControlName="municipality" (selectionChange)="changeMunicipality($event)">
+                        <mat-option *ngFor="let municipality of municipalities" [value]="municipality.municipality">
+                          {{municipality.municipality}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf = "municipalitySelected">
+                <mat-form-field class='inputText'>
+                    <mat-label>Microlocation</mat-label>
+                    <input type="text" matInput name='microlocation' required formControlName = 'microlocation'>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button type="submit" >Add</button>
+            <button mat-raised-button type="button" routerLink="../approve">Back</button>
+
+        </form>
+    </div>
+</div>

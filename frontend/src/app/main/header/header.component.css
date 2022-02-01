@@ -1,0 +1,22 @@
+header {
+    background-color : black;
+}
+
+.container{
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+span{
+    color : white;
+}
+
+.vl{
+    display:flex;
+    align-items: center;
+    border-left: 1px solid white ;
+    height:22px;
+    margin-left: 5px;
+    margin-right: 5px;
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"municipality.js","sourceRoot":"","sources":["../../src/models/municipality.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAGhC,MAAM,MAAM,GAAG,kBAAQ,CAAC,MAAM,CAAC;AAI/B,IAAI,YAAY,GAAG,IAAI,MAAM,CAAC;IAE1B,YAAY,EAAE;QACV,IAAI,EAAE,MAAM;KACf;CACJ,CAAC,CAAA;AAEF,kBAAe,kBAAQ,CAAC,KAAK,CAAC,cAAc,EAAE,YAAY,EAAE,gBAAgB,CAAC,CAAC"}

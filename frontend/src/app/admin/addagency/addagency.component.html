@@ -1,0 +1,32 @@
+<div class="background">
+    <div class='wrapper'>
+        <!-- <img class='logo' src="/assets/outline_maps_home_work_white_24dp.png"> -->
+        <form class='loginForm'  (submit)="onSubmit()" [formGroup]="form">
+            <h1>Add new agency </h1>
+                <mat-form-field class='inputText'>
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput name='name' required formControlName = 'name'>
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>address</mat-label>
+                    <input type="text" matInput name='address' required formControlName = 'address'>
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>city</mat-label>
+                    <input type="text" matInput name='city' required formControlName = 'city'>
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>phone</mat-label>
+                    <input type="text" matInput name='phone'  required formControlName = 'phone'>
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>pib</mat-label>
+                    <input type="text" matInput name='pib' required formControlName = 'pib'>
+                </mat-form-field>
+
+            <button mat-raised-button type="submit" >Add</button>
+            <button mat-raised-button type="button" routerLink="../approve">Back</button>
+
+        </form>
+    </div>
+</div>

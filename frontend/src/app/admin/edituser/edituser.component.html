@@ -1,0 +1,27 @@
+<div class="background">
+    <div class='wrapper'>
+      
+        <form class='loginForm'  (submit)="onSubmit()" [formGroup]="form">
+
+                <h1>{{user.username}}</h1>
+
+                <div>
+                    <h3>{{user.firstname}} {{user.lastname}}</h3>
+                </div>
+
+                <mat-form-field class='inputText'>
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput name='email'  required formControlName = 'email'>
+                </mat-form-field>
+
+                <mat-form-field class='inputText'>
+                    <mat-label>Phone</mat-label>
+                    <input type="text" matInput name='phone' required formControlName = 'phone'>
+                </mat-form-field>
+
+            <button mat-raised-button type="submit" >Edit</button>
+            <button mat-raised-button type="button" routerLink="../approve">Back</button>
+
+        </form>
+    </div>
+</div>

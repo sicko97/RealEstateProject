@@ -1,0 +1,77 @@
+<div class="background">
+    <div class='wrapper'>
+        <img class='logo' src="/assets/outline_maps_home_work_white_24dp.png">
+        <form class='loginForm' [formGroup]="form" (submit)="onRegister()">
+            <h1>Create your account </h1>
+            <div class="name">
+                <mat-form-field class='inputText'>
+                    <mat-label>Firstname</mat-label>
+                    <input type="text" matInput name='firstname' formControlName="firstname">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Lastname</mat-label>
+                    <input type="text" matInput name='lastname' formControlName="lastname">
+                </mat-form-field>
+            </div>
+
+            <div class='loginData'>
+                <mat-form-field class='inputText'>
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput name='username' formControlName="username">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput name='password' formControlName="password">
+                </mat-form-field>
+            </div>
+
+            <div class='cityAndBirthday'>
+                <mat-form-field class='inputText'>
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput name='city' formControlName="city">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Birthday</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthday">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="phoneAndMail">
+                <mat-form-field class='inputText'>
+                    <mat-label>Phone</mat-label>
+                    <input type="text" matInput name='phone' formControlName="phone">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput name='email'  formControlName="email">
+                </mat-form-field>
+            </div>
+
+            <div class="upload">
+                <button mat-stroked-button type="button" (click)="filePicker.click()">
+                    Pick Image
+                </button>
+                <img class='preview' [src]="imagePreview" [alt]="form.value.username" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+                <input type="file" #filePicker (change)="onImagePicked($event)">
+
+            </div>
+            <mat-slide-toggle name="toggle" formControlName="isChecked" (change)="onToggle($event)">Seller?</mat-slide-toggle>
+            <div class="seller" *ngIf="isChecked">
+                <mat-form-field class='inputText'>
+                    <mat-label>Agency</mat-label>
+                    <input type="text" matInput name='agency' formControlName="agency">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Licence</mat-label>
+                    <input type="text" matInput name='licence' formControlName="licence">
+                </mat-form-field>
+            </div>
+            <re-captcha (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" ></re-captcha>
+            <button mat-raised-button type="submit" >Register</button>
+            <button mat-raised-button type="button" routerLink="../landing">Back</button>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,215 @@
+<div class="background">
+    <div class='wrapper'>
+        <img class='logo' src="/assets/outline_maps_home_work_white_24dp.png">
+        <form class='loginForm' [formGroup]="form" (submit)="onRegister()">
+            <h1>Add RealEstate </h1>
+            <div class="title">
+                <mat-form-field class='inputText'>
+                    <mat-label>Title</mat-label>
+                    <input type="text" matInput name='title' formControlName="title">
+                </mat-form-field>
+            </div>
+            <div class='type'>
+
+                <mat-form-field>
+                    <mat-label>Type</mat-label>
+                    <mat-select name="type" required formControlName="type">
+                        <mat-option *ngFor="let type of houseType" [value]="type">
+                            {{type}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="rooms">
+                <mat-form-field>
+                    <mat-label>Rooms</mat-label>
+                    <mat-select name="rooms" required formControlName="rooms">
+                        <mat-option *ngFor="let room of rooms" [value]="room">
+                            {{room}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <h3>Location</h3>
+            <div class='location'>
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <mat-select name="city" required formControlName="city" (selectionChange)="changeCity($event)">
+                        <mat-option *ngFor="let city of cities" [value]="city.city">
+                            {{city.city}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div *ngIf="citySelected">
+                    <mat-form-field>
+                        <mat-label>Municipality</mat-label>
+                        <mat-select name="municipality" required formControlName="municipality"
+                            (selectionChange)="changeMunicipality($event)">
+                            <mat-option *ngFor="let municipality of municipalities" [value]="municipality.municipality">
+                                {{municipality.municipality}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="municipalitySelected">
+                    <mat-form-field>
+                        <mat-label>Microlocation</mat-label>
+                        <mat-select name="microlocation" required formControlName="microlocation"
+                            (selectionChange)="changeMunicipality($event)">
+                            <mat-option *ngFor="let microlocation of microlocations"
+                                [value]="microlocation.microlocation">
+                                {{microlocation.microlocation}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <h3>Basic Info</h3>
+
+
+            <div class='streetAndPrice'>
+                <mat-form-field class='inputText'>
+                    <mat-label>Street</mat-label>
+                    <input type="text" matInput name='street' formControlName="street">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Price</mat-label>
+                    <input type="text" matInput name='price' formControlName="price">
+                </mat-form-field>
+            </div>
+
+
+            <div class='squareandState'>
+                <mat-form-field class='inputText'>
+                    <mat-label>SquareFootage</mat-label>
+                    <input type="text" matInput name='square' formControlName="square">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>State</mat-label>
+                    <input type="text" matInput name='state' formControlName="state">
+                </mat-form-field>
+            </div>
+
+            <div class="yearAndHeating">
+                <mat-form-field class='inputText'>
+                    <mat-label>Year</mat-label>
+                    <input type="text" matInput name='year' formControlName="year">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Heating</mat-label>
+                    <input type="text" matInput name='heating' formControlName="heating">
+                </mat-form-field>
+
+            </div>
+
+            <div class="floorAndMaxFloor">
+                <mat-form-field class='inputText'>
+                    <mat-label>Floor</mat-label>
+                    <input type="text" matInput name='floor' formControlName="floor">
+                </mat-form-field>
+                <mat-form-field class='inputText'>
+                    <mat-label>Max. Floor</mat-label>
+                    <input type="text" matInput name='maxfloor' formControlName="maxfloor">
+                </mat-form-field>
+            </div>
+
+            <div class="description">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Large apartment located in..." name="desc"
+                        formControlName="desc"></textarea>
+                </mat-form-field>
+            </div>
+
+            <h3>Characteristics</h3>
+
+            <div class="line1">
+                <mat-checkbox class="example-margin" name="terrace" formControlName="terrace">Terrace</mat-checkbox>
+                <mat-checkbox class="example-margin" name="loggia" formControlName="loggia">Loggia</mat-checkbox>
+                <mat-checkbox class="example-margin" name="balcony" formControlName="balcony">Balcony</mat-checkbox>
+            </div>
+            <div class="line2">
+                <mat-checkbox class="example-margin" name="elevator" formControlName="elevator">Elevator</mat-checkbox>
+                <mat-checkbox class="example-margin" name="basement" formControlName="basement">Basement</mat-checkbox>
+                <mat-checkbox class="example-margin" name="garage" formControlName="garage">Garage</mat-checkbox>
+            </div>
+            <div class="line3">
+                <mat-checkbox class="example-margin" name="garden" formControlName="garden">Garden</mat-checkbox>
+                <mat-checkbox class="example-margin" name="ac" formControlName="ac">AC</mat-checkbox>
+                <mat-checkbox class="example-margin" name="internet" formControlName="internet">Internet</mat-checkbox>
+            </div>
+            <div class="line4">
+                <mat-checkbox class="example-margin" name="intercom" formControlName="intercom">Intercom</mat-checkbox>
+                <mat-checkbox class="example-margin" name="phone" formControlName="phone">Phone</mat-checkbox>
+            </div>
+
+            <h3>Images</h3>
+            <span>(at least 3)</span>
+            <div class="first3">
+                <div class="upload">
+                    <button mat-stroked-button type="button" (click)="filePicker1.click()">
+                        Image1
+                    </button>
+                    <img class='preview' [src]="imagePreview1" [alt]="form.value.image1"
+                        *ngIf="imagePreview1 !== '' && imagePreview1 && form.get('image1').valid">
+                    <input type="file" #filePicker1 (change)="onImagePicked1($event)">
+
+                </div>
+                <div class="upload">
+                    <button mat-stroked-button type="button" (click)="filePicker2.click()">
+                        Image2
+                    </button>
+                    <img class='preview' [src]="imagePreview2" [alt]="form.value.image2"
+                        *ngIf="imagePreview2 !== '' && imagePreview2 && form.get('image2').valid">
+                    <input type="file" #filePicker2 (change)="onImagePicked2($event)">
+
+                </div>
+                <div class="upload">
+                    <button mat-stroked-button type="button" (click)="filePicker3.click()">
+                        Image3
+                    </button>
+                    <img class='preview' [src]="imagePreview3" [alt]="form.value.image3"
+                        *ngIf="imagePreview3 !== '' && imagePreview3 && form.get('image3').valid">
+                    <input type="file" #filePicker3 (change)="onImagePicked3($event)">
+
+                </div>
+            </div>
+
+            <div class="next3">
+
+            <div class="upload">
+                <button mat-stroked-button type="button" (click)="filePicker4.click()">
+                    Image4
+                </button>
+                <img class='preview' [src]="imagePreview4" [alt]="form.value.image4"
+                    *ngIf="imagePreview4 !== '' && imagePreview4 && form.get('image4').valid">
+                <input type="file" #filePicker4 (change)="onImagePicked4($event)">
+
+            </div>
+            <div class="upload">
+                <button mat-stroked-button type="button" (click)="filePicker5.click()">
+                    Image5
+                </button>
+                <img class='preview' [src]="imagePreview5" [alt]="form.value.image5"
+                    *ngIf="imagePreview5 !== '' && imagePreview5 && form.get('image5').valid">
+                <input type="file" #filePicker5 (change)="onImagePicked5($event)">
+
+            </div>
+            <div class="upload">
+                <button mat-stroked-button type="button" (click)="filePicker6.click()">
+                    Image6
+                </button>
+                <img class='preview' [src]="imagePreview6" [alt]="form.value.image6"
+                    *ngIf="imagePreview6 !== '' && imagePreview6 && form.get('image6').valid">
+                <input type="file" #filePicker6 (change)="onImagePicked6($event)">
+
+            </div>
+        </div>
+
+            <button mat-raised-button type="submit">Register</button>
+            <button mat-raised-button type="button" routerLink="../landing">Back</button>
+
+        </form>
+    </div>
+</div>

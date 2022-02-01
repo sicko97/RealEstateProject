@@ -1,0 +1,39 @@
+.background{
+  background-image: url(/assets/high-resolution-new-york-city-skyline-panorama-vast-xl.jpg);
+  display: flex;
+  height: 50%;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+h1{
+  font-size: 35pt;
+  color:white;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+h2{
+  font-style: italic;
+  color : white;
+  letter-spacing: 1px;
+}
+
+button{
+  margin : 15px;
+  background-color:  white;
+  width:130px;
+}
+
+img{
+  position :absolute;
+  top:30px;
+  left:20px;
+  height: 80px;
+}

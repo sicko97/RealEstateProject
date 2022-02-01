@@ -1,0 +1,24 @@
+<div class="background">
+    <div class='wrapper'>
+        <img src="/assets/outline_maps_home_work_white_24dp.png">
+        <form class='loginForm'>
+            <h1>Login </h1>
+            <mat-form-field class='inputText'>
+                <mat-label>Username</mat-label>
+                <input type="text" matInput name='username' [(ngModel)]="username">
+            </mat-form-field>
+            <mat-form-field class='inputText'>
+                <mat-label>Password</mat-label>
+                <input matInput type='password' name='password' [(ngModel)]="password" >
+            </mat-form-field>
+
+            <button mat-raised-button (click)="login()">Login</button>
+            <button mat-raised-button (click)="back()">Back</button>
+
+            <span class="error">{{message}}</span>
+        </form>
+    </div>
+</div>
+
+
+  

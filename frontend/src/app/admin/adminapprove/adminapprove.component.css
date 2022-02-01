@@ -1,0 +1,32 @@
+.container{
+    width : 47%;
+  } 
+  
+  .title{
+      display:flex;
+     justify-content: center;
+  }
+
+  .cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  mat-card{
+    width : 200px;
+    margin  : 30px;
+  }
+
+  .profile{
+      height:100px;
+  }
+
+  .approve{
+      color: green;
+  }
+
+  .deny{
+      color:red;
+  }
