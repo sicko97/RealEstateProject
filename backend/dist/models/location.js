@@ -16,5 +16,5 @@ let Location = new Schema({
         type: String
     }
 });
-exports.default = mongoose_1.default.model('Location', Location, 'microlocation');
+exports.default = mongoose_1.default.model('Location', Location, 'microlocations');
 //# sourceMappingURL=location.js.map

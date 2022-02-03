@@ -35,6 +35,10 @@ realEstateRouter.route('/add').post(
     multer({ storage: storage }).array("images"), (req, res) => new RealEstateController().add(req, res)
 );
 
+realEstateRouter.route('/getAll').get(
+    (req,res)=> new RealEstateController().getAll(req,res)
+)
+
 
 
 export default realEstateRouter;

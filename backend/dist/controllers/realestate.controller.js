@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RealEstateController = void 0;
 const house_1 = __importDefault(require("../models/house"));
 class RealEstateController {
     constructor() {
@@ -61,6 +60,16 @@ class RealEstateController {
                 res.status(200).json({ 'message': 'user added' });
             }).catch(err => {
                 res.status(400).json({ 'message': err });
+            });
+        };
+        this.getAll = (req, res) => {
+            house_1.default.find({}, (err, houses) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    return res.json(houses);
+                }
             });
         };
     }

@@ -1,0 +1,84 @@
+<div class="search">
+    <div class="container">
+        <mat-card class="filter-card">
+            <mat-card-header>
+                <mat-card-title>Filters</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="filtering">
+                    <mat-select name="type">
+                        <mat-option value="stan">
+                            stan
+                        </mat-option>
+                        <mat-option value="kuca">
+                            kuca
+                        </mat-option>
+                        <mat-option value="vikendica">
+                            vikendica
+                        </mat-option>
+                        <mat-option value="lokal">
+                            lokal
+                        </mat-option>
+                        <mat-option value="magacin">
+                            magacin
+                        </mat-option>
+                    </mat-select>
+                    <div class='location'>
+                        <mat-form-field>
+                            <mat-label>City</mat-label>
+                            <mat-select name="city" (selectionChange)="changeCity($event)" [(ngModel)]='city'>
+                                <mat-option *ngFor="let city of cities" [value]="city.city">
+                                    {{city.city}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="citySelected">
+                            <mat-form-field>
+                                <mat-label>Municipality</mat-label>
+                                <mat-select name="municipality" (selectionChange)="changeMunicipality($event)"
+                                    (ngModel)]='municipality'>
+                                    <mat-option *ngFor="let municipality of municipalities"
+                                        [value]="municipality.municipality">
+                                        {{municipality.municipality}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="municipalitySelected">
+                            <mat-form-field>
+                                <mat-label>Microlocation</mat-label>
+                                <mat-select name="microlocation" (selectionChange)="changeMunicipality($event)"
+                                    (ngModel)]='microlocation'>
+                                    <mat-option *ngFor="let microlocation of microlocations"
+                                        [value]="microlocation.microlocation">
+                                        {{microlocation.microlocation}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <div class="cards">
+            <mat-card class="example-card" *ngFor="let house of obs | async">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{house.title}}</mat-card-title>
+                    <mat-card-subtitle>{{house.type}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{house.image1}}>
+                <mat-card-content>
+                    <p>{{house.desc}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>DETAILS</button>
+                    <button mat-button>FAVORITE</button>
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+</div>

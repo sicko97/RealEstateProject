@@ -9,6 +9,11 @@ export class RealestateService {
   constructor(private http : HttpClient) { }
 
 
+  getAll()
+  {
+    return this.http.get('http://localhost:4000/realestate/getAll');
+  }
+
 
   add(title, type, rooms, city, municipality, microlocation,
     street, price, square, state, year,heating, floor, maxfloor,desc,

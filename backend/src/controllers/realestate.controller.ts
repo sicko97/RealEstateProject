@@ -62,5 +62,15 @@ export class RealEstateController {
 
     }
 
+    getAll=(req:express.Request, res:express.Response)=>{
+            House.find({},(err,houses)=>{
+                if(err){
+                    console.log(err);
+                }else{
+                    return res.json(houses);
+                }
+            })
+    }
+
 
 }

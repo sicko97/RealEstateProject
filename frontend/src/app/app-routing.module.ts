@@ -14,6 +14,7 @@ import { SellernavComponent } from './seller/sellernav/sellernav.component';
 import { AddhouseComponent } from './seller/addhouse/addhouse.component';
 import { AddmicroComponent } from './admin/addmicro/addmicro.component';
 import { AddmicroFormComponent } from './admin/addmicro-form/addmicro-form.component';
+import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
     path: "buyer", component: BuyernavComponent,
     children: [
       {
-        path: "buyer-search", component: BuyerSearchComponent
+        path: "buyer-search", component: BuyerAllComponent
       },
       {
         path: "", redirectTo: "buyer-search", pathMatch: 'full'
