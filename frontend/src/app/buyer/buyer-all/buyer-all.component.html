@@ -2,27 +2,31 @@
     <div class="container">
         <mat-card class="filter-card">
             <mat-card-header>
-                <mat-card-title>Filters</mat-card-title>
+                <!-- <mat-card-title>Filters</mat-card-title> -->
             </mat-card-header>
             <mat-card-content>
+                <h2>Filters</h2>
                 <div class="filtering">
-                    <mat-select name="type">
-                        <mat-option value="stan">
-                            stan
-                        </mat-option>
-                        <mat-option value="kuca">
-                            kuca
-                        </mat-option>
-                        <mat-option value="vikendica">
-                            vikendica
-                        </mat-option>
-                        <mat-option value="lokal">
-                            lokal
-                        </mat-option>
-                        <mat-option value="magacin">
-                            magacin
-                        </mat-option>
-                    </mat-select>
+                    <mat-form-field>
+                        <mat-label>Type</mat-label>
+                        <mat-select name="type">
+                            <mat-option value="stan">
+                                stan
+                            </mat-option>
+                            <mat-option value="kuca">
+                                kuca
+                            </mat-option>
+                            <mat-option value="vikendica">
+                                vikendica
+                            </mat-option>
+                            <mat-option value="lokal">
+                                lokal
+                            </mat-option>
+                            <mat-option value="magacin">
+                                magacin
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     <div class='location'>
                         <mat-form-field>
                             <mat-label>City</mat-label>
@@ -32,11 +36,12 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <div *ngIf="citySelected">
+                        <div >
                             <mat-form-field>
-                                <mat-label>Municipality</mat-label>
+                                <mat-label *ngIf="citySelected==true">Municipality</mat-label>
+                                <mat-label *ngIf="citySelected==false">Pick city</mat-label>
                                 <mat-select name="municipality" (selectionChange)="changeMunicipality($event)"
-                                    (ngModel)]='municipality'>
+                                    [(ngModel)]='municipality'>
                                     <mat-option *ngFor="let municipality of municipalities"
                                         [value]="municipality.municipality">
                                         {{municipality.municipality}}
@@ -44,11 +49,12 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <div *ngIf="municipalitySelected">
+                        <div >
                             <mat-form-field>
-                                <mat-label>Microlocation</mat-label>
+                                <mat-label *ngIf="municipalitySelected ==true">Microlocation</mat-label>
+                                <mat-label *ngIf="municipalitySelected ==false">Pick municipality</mat-label>
                                 <mat-select name="microlocation" (selectionChange)="changeMunicipality($event)"
-                                    (ngModel)]='microlocation'>
+                                    [(ngModel)]='microlocation'>
                                     <mat-option *ngFor="let microlocation of microlocations"
                                         [value]="microlocation.microlocation">
                                         {{microlocation.microlocation}}
@@ -57,6 +63,21 @@
                             </mat-form-field>
                         </div>
                     </div>
+                    <div class="additional">
+                        <mat-form-field class='inputText'>
+                            <mat-label>Max. Price</mat-label>
+                            <input type="text" matInput name='maxPrice' >
+                        </mat-form-field>
+                        <mat-form-field class='inputText'>
+                            <mat-label>Min. SquareFootage</mat-label>
+                            <input type="text" matInput name='SquareFootage'>
+                        </mat-form-field>
+                        <mat-form-field class='inputText'>
+                            <mat-label>Rooms</mat-label>
+                            <input type="text" matInput name='rooms' >
+                        </mat-form-field>
+                    </div>
+                    <button mat-raised-button color="primary"  type="button" >Filter</button>
                 </div>
             </mat-card-content>
         </mat-card>

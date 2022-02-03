@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LocationController = void 0;
 const municipality_1 = __importDefault(require("../models/municipality"));
 const city_1 = __importDefault(require("../models/city"));
 const location_1 = __importDefault(require("../models/location"));

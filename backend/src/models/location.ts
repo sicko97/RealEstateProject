@@ -18,4 +18,4 @@ let Location = new Schema({
     }
 })
 
-export default mongoose.model('Location', Location, 'microlocations');
+export default mongoose.model('Location', Location, 'microlocation');
