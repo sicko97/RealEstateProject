@@ -49,9 +49,9 @@ export class RealEstateController {
             image1: url + "/images/" + images[0].filename,
             image2: url + "/images/" + images[1].filename,
             image3: url + "/images/" + images[2].filename,
-            image4: url +  "/images/" + this.image4,
-            image5: url +  "/images/" + this.image5,
-            image6:  url +  "/images/" + this.image6
+            image4: url + "/images/" + this.image4,
+            image5: url + "/images/" + this.image5,
+            image6: url + "/images/" + this.image6
         })
         console.log("doslo do registracije");
         house.save().then(house => {
@@ -62,15 +62,82 @@ export class RealEstateController {
 
     }
 
-    getAll=(req:express.Request, res:express.Response)=>{
-            House.find({},(err,houses)=>{
-                if(err){
-                    console.log(err);
-                }else{
-                    return res.json(houses);
-                }
-            })
+    getAll = (req: express.Request, res: express.Response) => {
+        House.find({}, (err, houses) => {
+            if (err) {
+                console.log(err);
+            } else {
+                return res.json(houses);
+            }
+        })
     }
 
+    getSimpleFilter = (req: express.Request, res: express.Response) => {
 
+        let type = req.query.type;
+        let city = req.query.city;
+        let municipality = req.query.municipality;
+        let microlocation = req.query.microlocation;
+        let maxPrice = req.query.maxprice;
+        let squareFootage = req.query.squareFootage;
+        let rooms = req.query.rooms;
+
+        let queryObj: {
+            type?: string;
+            city?: string;
+            municipality?: string;
+            microlocation?: string;
+            price?: Object;
+            square?: Object;
+            rooms?: Object;
+
+        } = {};
+
+        let filters = {
+            type: type,
+            city: city,
+            municipality: municipality,
+            microlocation: microlocation
+        }
+
+        // item = {};
+
+        if (type != "undefined") {
+            queryObj.type = type;
+        }
+
+        if (city != "undefined") {
+            queryObj.city = city;
+        }
+
+
+        if (municipality != "undefined") {
+            queryObj.municipality = municipality;
+        }
+
+        if (microlocation != "undefined") {
+            queryObj.microlocation = microlocation;
+        }
+
+        if (maxPrice != "undefined") {
+            queryObj.price = { $lte: parseInt(maxPrice) };
+        }
+
+        if (squareFootage != "undefined") {
+            queryObj.square = { $gte: parseInt(squareFootage) };
+        }
+
+        if (rooms != "undefined") {
+            queryObj.rooms = { $gte: parseFloat(rooms) };
+        }
+        console.log(queryObj);
+
+        House.find(queryObj, (err, houses) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(houses);
+            }
+        });
+    }
 }

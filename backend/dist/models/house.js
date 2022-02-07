@@ -101,6 +101,10 @@ let House = new Schema({
     },
     image6: {
         type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 exports.default = mongoose_1.default.model('House', House, 'realestate');

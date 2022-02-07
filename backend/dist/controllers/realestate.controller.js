@@ -73,6 +73,53 @@ class RealEstateController {
                 }
             });
         };
+        this.getSimpleFilter = (req, res) => {
+            let type = req.query.type;
+            let city = req.query.city;
+            let municipality = req.query.municipality;
+            let microlocation = req.query.microlocation;
+            let maxPrice = req.query.maxprice;
+            let squareFootage = req.query.squareFootage;
+            let rooms = req.query.rooms;
+            let queryObj = {};
+            let filters = {
+                type: type,
+                city: city,
+                municipality: municipality,
+                microlocation: microlocation
+            };
+            // item = {};
+            if (type != "undefined") {
+                queryObj.type = type;
+            }
+            if (city != "undefined") {
+                queryObj.city = city;
+            }
+            if (municipality != "undefined") {
+                queryObj.municipality = municipality;
+            }
+            if (microlocation != "undefined") {
+                queryObj.microlocation = microlocation;
+            }
+            if (maxPrice != "undefined") {
+                queryObj.price = { $lte: parseInt(maxPrice) };
+            }
+            if (squareFootage != "undefined") {
+                queryObj.square = { $gte: parseInt(squareFootage) };
+            }
+            if (rooms != "undefined") {
+                queryObj.rooms = { $gte: parseFloat(rooms) };
+            }
+            console.log(queryObj);
+            house_1.default.find(queryObj, (err, houses) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(houses);
+                }
+            });
+        };
     }
 }
 exports.RealEstateController = RealEstateController;

@@ -9,21 +9,9 @@
                 <div class="filtering">
                     <mat-form-field>
                         <mat-label>Type</mat-label>
-                        <mat-select name="type">
-                            <mat-option value="stan">
-                                stan
-                            </mat-option>
-                            <mat-option value="kuca">
-                                kuca
-                            </mat-option>
-                            <mat-option value="vikendica">
-                                vikendica
-                            </mat-option>
-                            <mat-option value="lokal">
-                                lokal
-                            </mat-option>
-                            <mat-option value="magacin">
-                                magacin
+                        <mat-select name="type" [(ngModel)]="type">
+                            <mat-option *ngFor="let type of houseType" [value]="type">
+                                {{type}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -36,7 +24,7 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <div >
+                        <div>
                             <mat-form-field>
                                 <mat-label *ngIf="citySelected==true">Municipality</mat-label>
                                 <mat-label *ngIf="citySelected==false">Pick city</mat-label>
@@ -49,7 +37,7 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <div >
+                        <div>
                             <mat-form-field>
                                 <mat-label *ngIf="municipalitySelected ==true">Microlocation</mat-label>
                                 <mat-label *ngIf="municipalitySelected ==false">Pick municipality</mat-label>
@@ -66,18 +54,22 @@
                     <div class="additional">
                         <mat-form-field class='inputText'>
                             <mat-label>Max. Price</mat-label>
-                            <input type="text" matInput name='maxPrice' >
+                            <input type="text" matInput name='maxPrice' [(ngModel)]="maxPrice">
                         </mat-form-field>
                         <mat-form-field class='inputText'>
                             <mat-label>Min. SquareFootage</mat-label>
-                            <input type="text" matInput name='SquareFootage'>
+                            <input type="text" matInput name='SquareFootage' [(ngModel)]="squareFootage">
                         </mat-form-field>
-                        <mat-form-field class='inputText'>
+                        <mat-form-field>
                             <mat-label>Rooms</mat-label>
-                            <input type="text" matInput name='rooms' >
+                            <mat-select name="rooms" [(ngModel)]="room">
+                                <mat-option *ngFor="let room of rooms" [value]="room">
+                                    {{room}}
+                                </mat-option>
+                            </mat-select>
                         </mat-form-field>
                     </div>
-                    <button mat-raised-button color="primary"  type="button" >Filter</button>
+                    <button mat-raised-button color="primary" type="button" (click)="filter()">Filter</button>
                 </div>
             </mat-card-content>
         </mat-card>
@@ -87,11 +79,18 @@
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>{{house.title}}</mat-card-title>
-                    <mat-card-subtitle>{{house.type}}</mat-card-subtitle>
+                    <mat-card-subtitle>{{house.city}}-{{house.municipality}}-{{house.microlocation}}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image src={{house.image1}}>
                 <mat-card-content>
+                    SquareFootage : {{house.square}}
+                    <br>
+                    Rooms : {{house.rooms}}
+                    <br>
+                    Floor : {{house.floor}}
                     <p>{{house.desc}}</p>
+                    Price : {{house.price}}
+
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button>DETAILS</button>

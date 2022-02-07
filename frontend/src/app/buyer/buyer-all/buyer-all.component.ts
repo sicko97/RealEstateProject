@@ -24,12 +24,18 @@ export class BuyerAllComponent implements OnInit {
   microlocations: Location[] = [];
   cities: City[] = [];
   municipalities: Municipality[] = [];
-  citySelected :Boolean=false;
-  municipalitySelected :Boolean=false;
-  microlocationSelected :Boolean=false;
-  city :String ;
-  municipality :String;
-  microlocation:String;
+  citySelected: Boolean = false;
+  municipalitySelected: Boolean = false;
+  microlocationSelected: Boolean = false;
+  city: String;
+  municipality: String;
+  microlocation: String;
+  houseType : String[] = ['apartment', 'house','country house','locale','storage'];
+  rooms: Number[] = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
+  room: Number;
+  type: string;
+  squareFootage: Number;
+  maxPrice: Number;
 
   constructor(private realestateService: RealestateService,
     private changeDetectorRef: ChangeDetectorRef,
@@ -38,6 +44,10 @@ export class BuyerAllComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.realestateService.coingecko().subscribe(()=>{
+
+    });
 
     this.locationService.getAllCities().subscribe((cities: City[]) => {
       this.cities = cities;
@@ -71,12 +81,25 @@ export class BuyerAllComponent implements OnInit {
   }
 
 
-changeMunicipality(obj: MatSelectChange) {
+  changeMunicipality(obj: MatSelectChange) {
     this.municipalitySelected = true;
-    this.locationService.getMicrolocations(this.city,this.municipality).subscribe((microlocations :Location[])=>{
-        this.microlocations = microlocations;
-        this.microlocationSelected=true;
+    this.locationService.getMicrolocations(this.city, this.municipality).subscribe((microlocations: Location[]) => {
+      this.microlocations = microlocations;
+      this.microlocationSelected = true;
     })
   }
+
+  filter() {
+    this.realestateService.getSimpleFiltered(this.type,
+      this.city,
+      this.municipality,
+      this.microlocation,
+      this.maxPrice,
+      this.squareFootage,
+      this.room)
+    .subscribe((filteredHouses:House[])=>{
+      this.dataSource.data = filteredHouses;
+  })
+}
 
 }

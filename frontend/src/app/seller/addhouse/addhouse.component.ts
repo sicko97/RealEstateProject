@@ -35,7 +35,7 @@ export class AddhouseComponent implements OnInit {
   rooms : Number[] = [1,1.5,2,2.5,3,3.5,4,4.5,5];
   municipalitySelected = false;
   microlocationSelected = false;
-  houseType : String[] = ['apartment', 'house','country house','locale','storage']
+  houseType : String[] = ['apartment', 'house','country house','locale','storage'];
 
   constructor(private locationService: LocationService , private realEstateService : RealestateService) { }
 

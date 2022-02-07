@@ -102,6 +102,10 @@ let House = new Schema({
     },
     image6: {
         type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 
