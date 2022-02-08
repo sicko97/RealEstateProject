@@ -5,11 +5,11 @@ export class User {
     password: string;
     city: string;
     birthday: string;
-    phone: Number;
+    phone: string;
     email: string;
     agency: string;
     licence: Number;
     type: Number;
-    image : string;
-    approved : Number;
+    image: string;
+    approved: Number;
 }

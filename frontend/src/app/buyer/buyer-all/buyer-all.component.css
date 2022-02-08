@@ -25,6 +25,18 @@
      width : 330px;
       margin-top: 25px;
    }
+
+   mat-card-content{
+     width : 200px;
+   }
+   .card-img{
+     width : 330px;
+     height : 330px;
+   }
+   
+   .description{
+     overflow-wrap: break-word;
+   }
    
    .search{
      display: flex;

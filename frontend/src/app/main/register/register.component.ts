@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   approved = 0;
   type = 0;
   file = null;
+  captcha : boolean = false;
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -26,11 +27,13 @@ export class RegisterComponent implements OnInit {
       'username': new FormControl(null, {
         validators: [
           Validators.required,
+          Validators.pattern(/[a-zA-Z]/)
         ]
       }),
       'firstname': new FormControl(null, {
         validators: [
-          Validators.required
+          Validators.required,
+          Validators.pattern(/[a-zA-Z]/)
           //  Validators.pattern('[a-zA-Z]')
         ]
       }),
@@ -44,18 +47,21 @@ export class RegisterComponent implements OnInit {
       'lastname': new FormControl(null, {
         validators: [
           Validators.required,
-          //  Validators.pattern('[a-zA-Z]')
+          Validators.pattern(/[a-zA-Z]/)
         ]
       }),
       'password': new FormControl(null, {
         validators: [
           Validators.required,
-          Validators.minLength(5)
+          Validators.minLength(8),
+          Validators.pattern(/(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])^[A-Za-z][A-Za-z\d@$!%*#?&]/)
+
         ]
       }),
       'city': new FormControl(null, {
         validators: [
-          Validators.required
+          Validators.required,
+          Validators.pattern(/[a-zA-Z]/)
         ]
       }),
       'birthday': new FormControl(null, {
@@ -66,6 +72,7 @@ export class RegisterComponent implements OnInit {
       'phone': new FormControl(null, {
         validators: [
           Validators.required,
+          Validators.pattern(/^[+](\(\d{3}\))[0-9]{8,}/)
           //  Validators.pattern('[0-9]')
         ]
       }),
@@ -116,7 +123,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    if (this.form.invalid) {
+    if (this.form.invalid || !this.captcha) {
       console.log("nesto jede kurac");
       return
     } else {
@@ -130,8 +137,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public resolved(captchaResponse: string) { 
+  public resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`); // Write your logic here about once human verified what action you want to perform 
-    }
+    this.captcha = true;
+  }
 
 }

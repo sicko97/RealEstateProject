@@ -81,14 +81,17 @@
                     <mat-card-title>{{house.title}}</mat-card-title>
                     <mat-card-subtitle>{{house.city}}-{{house.municipality}}-{{house.microlocation}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image src={{house.image1}}>
+                <img class="card-img" mat-card-image src={{house.image1}}>
                 <mat-card-content>
                     SquareFootage : {{house.square}}
                     <br>
                     Rooms : {{house.rooms}}
                     <br>
                     Floor : {{house.floor}}
-                    <p>{{house.desc}}</p>
+                    <br>
+                    Description :
+                    <br>
+                    <p class="description">{{house.desc}}</p>
                     Price : {{house.price}}
 
                 </mat-card-content>
@@ -99,6 +102,6 @@
             </mat-card>
 
         </div>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
     </div>
 </div>

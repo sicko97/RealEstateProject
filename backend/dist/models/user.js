@@ -25,7 +25,7 @@ let User = new Schema({
         type: String
     },
     phone: {
-        type: Number
+        type: String
     },
     email: {
         type: String
