@@ -7,6 +7,8 @@ import { Municipality } from 'src/app/models/municipality';
 import { LocationService } from 'src/app/services/location.service';
 import { RealestateService } from 'src/app/services/realestate.service';
 import { mimeType } from '../../main/register/mime-type.validator';
+import { HouseJSON } from 'src/app/models/HouseJSON';
+import { ArrayJSON } from 'src/app/models/arrayJSON';
 
 @Component({
   selector: 'app-addhouse',
@@ -36,6 +38,11 @@ export class AddhouseComponent implements OnInit {
   municipalitySelected = false;
   microlocationSelected = false;
   houseType: String[] = ['apartment', 'house', 'country house', 'locale', 'storage'];
+
+  //JSON
+  houseJSON: HouseJSON;
+  selectedFile;
+
 
   constructor(private locationService: LocationService, private realEstateService: RealestateService) { }
 
@@ -306,6 +313,16 @@ export class AddhouseComponent implements OnInit {
         this.form.value.image1, this.form.value.image2, this.form.value.image3, this.form.value.image4, this.form.value.image5, this.form.value.image6).subscribe(() => {
 
         })
+    }
+  }
+
+  uploadFile(event: Event) {
+    this.selectedFile = (event.target as HTMLInputElement).files[0];
+    const fileReader = new FileReader();
+    fileReader.readAsText(this.selectedFile, "UTF-8");
+    fileReader.onload = () => {
+      this.houseJSON = (JSON.parse(fileReader.result.toString()));
+      alert(this.houseJSON.Realestate.Characteristics);
     }
   }
 

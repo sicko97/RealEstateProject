@@ -27,26 +27,29 @@
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false" fxHide.gt-xs position="end">
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false" fxHide.gt-xs
+    position="end">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="addhouse" >Add House</a>
-      <a mat-list-item routerLink="#" >Stats</a>
+      <a mat-list-item routerLink="addhouse">Add House</a>
+      <a mat-list-item routerLink="addjson">JSON House</a>
+      <a mat-list-item routerLink="#">Stats</a>
       <a mat-list-item routerLink="#">MyAccount</a>
-      <a mat-list-item class = "logout" routerLink="../landing">Logout</a>
+      <a mat-list-item class="logout" routerLink="../landing">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class = "topnav">
-    <mat-toolbar  color="primary">
-      
+  <mat-sidenav-content class="topnav">
+    <mat-toolbar color="primary">
+
       <img src="/assets/logo.png">
       <h1>Real Estate App</h1>
 
-        <div fxFlex fxLayout fxLayoutAlign="end" fxLayoutGap ="50px" fxHide.xs>
-        <a routerLink="addhouse" >Add House</a>
-        <a routerLink="#" >Stats</a>
+      <div fxFlex fxLayout fxLayoutAlign="end" fxLayoutGap="50px" fxHide.xs>
+        <a routerLink="addhouse">Add House</a>
+        <a mat-list-item routerLink="addjson">JSON House</a>
+        <a routerLink="#">Stats</a>
         <a routerLink="#">MyAccount</a>
-        <a class = "logout" routerLink="../landing">Logout</a>
+        <a class="logout" routerLink="../landing">Logout</a>
       </div>
       <button fxFlex fxLayoutAlign="end" fxHide.gt-xs type="button" aria-label="Toggle sidenav" mat-icon-button
         (click)="drawer.toggle()" *ngIf="isHandset$ | async">
@@ -55,8 +58,8 @@
 
     </mat-toolbar>
     <div class="table">
-    <router-outlet>
-    </router-outlet>
+      <router-outlet>
+      </router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

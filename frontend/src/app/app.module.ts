@@ -47,6 +47,7 @@ import { AddmicroFormComponent } from './admin/addmicro-form/addmicro-form.compo
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
+import { AddjsonComponent } from './seller/addjson/addjson.component';
 
 
 
@@ -71,7 +72,8 @@ import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
     SellerMydataComponent,
     AddmicroComponent,
     AddmicroFormComponent,
-    BuyerAllComponent
+    BuyerAllComponent,
+    AddjsonComponent
   ],
   imports: [
     BrowserModule,

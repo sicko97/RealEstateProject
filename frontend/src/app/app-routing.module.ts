@@ -15,6 +15,7 @@ import { AddhouseComponent } from './seller/addhouse/addhouse.component';
 import { AddmicroComponent } from './admin/addmicro/addmicro.component';
 import { AddmicroFormComponent } from './admin/addmicro-form/addmicro-form.component';
 import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
+import { AddjsonComponent } from './seller/addjson/addjson.component';
 
 const routes: Routes = [
   {
@@ -59,18 +60,21 @@ const routes: Routes = [
         path: "edituser", component: EdituserComponent
       },
       {
-        path : "micro", component:AddmicroComponent
+        path: "micro", component: AddmicroComponent
       },
       {
-        path :"microform" , component :AddmicroFormComponent
+        path: "microform", component: AddmicroFormComponent
       }
     ]
   },
   {
-    path : 'seller', component:SellernavComponent,
-    children : [
+    path: 'seller', component: SellernavComponent,
+    children: [
       {
-        path : 'addhouse' , component :AddhouseComponent
+        path: 'addhouse', component: AddhouseComponent
+      },
+      {
+        path: 'addjson', component: AddjsonComponent
       }
     ]
   }
