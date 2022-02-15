@@ -59,9 +59,13 @@
             </div>
             <mat-slide-toggle name="toggle" formControlName="isChecked" (change)="onToggle($event)">Seller?</mat-slide-toggle>
             <div class="seller" *ngIf="isChecked">
-                <mat-form-field class='inputText'>
-                    <mat-label>Agency</mat-label>
-                    <input type="text" matInput name='agency' formControlName="agency">
+                <mat-form-field >
+                    <mat-label>Agencies</mat-label>
+                    <mat-select name="city" formControlName="agency" >
+                        <mat-option *ngFor="let agency of agencies" [value]="agency">
+                          {{agency.name}}
+                        </mat-option>
+                      </mat-select>
                 </mat-form-field>
                 <mat-form-field class='inputText'>
                     <mat-label>Licence</mat-label>
@@ -69,6 +73,7 @@
                 </mat-form-field>
             </div>
             <re-captcha (resolved)="resolved($event)" siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU" ></re-captcha>
+            <span *ngIf="taken" color="red">Username taken</span>
             <button mat-raised-button type="submit" >Register</button>
             <button mat-raised-button type="button" routerLink="../landing">Back</button>
 

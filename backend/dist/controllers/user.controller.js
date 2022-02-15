@@ -119,6 +119,17 @@ class UserController {
                 }
             });
         };
+        this.checkUsername = (req, res) => {
+            let username = req.query.username;
+            user_1.default.findOne({ 'username': username }, (err, user) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(user);
+                }
+            });
+        };
     }
 }
 exports.UserController = UserController;

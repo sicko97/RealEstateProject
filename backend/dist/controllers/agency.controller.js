@@ -21,6 +21,16 @@ class AgencyController {
                 res.status(400).json({ 'message': err });
             });
         };
+        this.getAll = (req, res) => {
+            agency_1.default.find({}, (err, agencies) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(agencies);
+                }
+            });
+        };
     }
 }
 exports.AgencyController = AgencyController;

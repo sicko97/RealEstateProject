@@ -35,6 +35,10 @@ userRouter.route('/login').post(
     (req, res) => new UserController().login(req, res)
 );
 
+userRouter.route('/checkUsername').get(
+    (req,res) => new UserController().checkUsername(req,res)
+)
+
 userRouter.route('/register').post(
 
     multer({ storage: storage }).single("image"), (req, res) => new UserController().register(req, res)

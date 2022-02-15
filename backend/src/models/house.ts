@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 
 
 let House = new Schema({
-
+    _id: {
+        type: mongoose.Schema.Types.ObjectId
+    },
     title: {
         type: String
     },
@@ -106,6 +108,9 @@ let House = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    seller: {
+        type: String
     }
 })
 

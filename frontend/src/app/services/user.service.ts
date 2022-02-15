@@ -55,6 +55,10 @@ export class UserService {
     return this.http.post("http://localhost:4000/users/approve", data)
   }
 
+  checkUsername(username){
+    return this.http.get(`http://localhost:4000/users/checkUsername?username=${username}`)
+  }
+
   denyUser(username) {
     const data = {
       username: username

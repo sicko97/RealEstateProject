@@ -18,11 +18,21 @@ export class AgencyController{
                 res.status(200).json({ 'message': 'agency added' })
             }).catch(err => {
                 res.status(400).json({ 'message': err })
-            })
-
-       
+            })  
     }
 
+
+    getAll = (req: express.Request , res: express.Response) => {
+
+            Agency.find({}, (err,agencies) => {
+                if(err){
+                    console.log(err);
+                }else{
+                    res.json(agencies);
+                }
+            })
+
+    }
 
 
 }

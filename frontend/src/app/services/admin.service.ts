@@ -24,5 +24,11 @@ export class AdminService {
 
   }
 
+  getAll(){
+
+    return this.http.get('http://localhost:4000/agency/getAll');
+
+  }
+
 
 }

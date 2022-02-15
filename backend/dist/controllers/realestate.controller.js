@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RealEstateController = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
 const house_1 = __importDefault(require("../models/house"));
 class RealEstateController {
     constructor() {
@@ -54,7 +55,8 @@ class RealEstateController {
                 image3: url + "/images/" + images[2].filename,
                 image4: url + "/images/" + this.image4,
                 image5: url + "/images/" + this.image5,
-                image6: url + "/images/" + this.image6
+                image6: url + "/images/" + this.image6,
+                seller: req.body.seller
             });
             console.log("doslo do registracije");
             house.save().then(house => {
@@ -62,6 +64,9 @@ class RealEstateController {
             }).catch(err => {
                 res.status(400).json({ 'message': err });
             });
+        };
+        this.findById = (req, res) => {
+            house_1.default.find({ '_id': new mongoose_1.default.Schema.Types.ObjectId("54524542542542") });
         };
         this.getAll = (req, res) => {
             house_1.default.find({}, (err, houses) => {

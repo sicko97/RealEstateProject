@@ -155,62 +155,62 @@ export class AddhouseComponent implements OnInit {
           Validators.required,
         ]
       }),
-      'terrace': new FormControl(null, {
+      'terrace': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'loggia': new FormControl(null, {
+      'loggia': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'balcony': new FormControl(null, {
+      'balcony': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'elevator': new FormControl(null, {
+      'elevator': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'basement': new FormControl(null, {
+      'basement': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'garage': new FormControl(null, {
+      'garage': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'desc': new FormControl(null, {
+      'desc': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'garden': new FormControl(null, {
+      'garden': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'ac': new FormControl(null, {
+      'ac': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'internet': new FormControl(null, {
+      'internet': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'intercom': new FormControl(null, {
+      'intercom': new FormControl(false, {
         validators: [
 
         ]
       }),
-      'phone': new FormControl(null, {
+      'phone': new FormControl(false, {
         validators: [
 
         ]
@@ -310,7 +310,7 @@ export class AddhouseComponent implements OnInit {
         this.form.value.microlocation, this.form.value.street, this.form.value.price, this.form.value.square, this.form.value.state, this.form.value.year, this.form.value.heating,
         this.form.value.floor, this.form.value.maxfloor, this.form.value.desc, this.form.value.terrace, this.form.value.loggia, this.form.value.balcony, this.form.value.elevator,
         this.form.value.basement, this.form.value.garage, this.form.value.garden, this.form.value.ac, this.form.value.internet, this.form.value.intercom, this.form.value.phone,
-        this.form.value.image1, this.form.value.image2, this.form.value.image3, this.form.value.image4, this.form.value.image5, this.form.value.image6).subscribe(() => {
+        this.form.value.image1, this.form.value.image2, this.form.value.image3, this.form.value.image4, this.form.value.image5, this.form.value.image6,JSON.parse(sessionStorage.getItem('user')).username).subscribe(() => {
 
         })
     }

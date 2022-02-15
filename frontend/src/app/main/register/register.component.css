@@ -79,4 +79,8 @@
   .upload{
       padding-left: 40px;
   }
+
+  span{
+      color :red;
+  }
   

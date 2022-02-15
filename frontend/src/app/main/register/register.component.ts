@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
+import { Agency } from 'src/app/models/agency';
+import { User } from 'src/app/models/user';
+import { AdminService } from 'src/app/services/admin.service';
 import { UserService } from '../../services/user.service';
 import { mimeType } from './mime-type.validator';
 @Component({
@@ -18,10 +21,19 @@ export class RegisterComponent implements OnInit {
   type = 0;
   file = null;
   captcha : boolean = false;
+  agencies : Agency[];
+  taken : boolean = false;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router,
+     private userService: UserService,
+     private adminService : AdminService) { }
 
   ngOnInit(): void {
+
+    this.adminService.getAll().subscribe((agencies:Agency[])=>{
+        this.agencies = agencies;
+    })
+
 
     this.form = new FormGroup({
       'username': new FormControl(null, {
@@ -97,18 +109,17 @@ export class RegisterComponent implements OnInit {
   onToggle(ob: MatSlideToggleChange) {
     this.isChecked = !this.isChecked;
 
-    if (this.isChecked) {
-      this.type = 1;
-      this.form.get('agency').setValidators([Validators.required]);
-      this.form.get('licence').setValidators([Validators.required]);
-    } else {
-      this.type = 0;
-      this.form.get('agency').clearValidators();
-      this.form.get('licence').clearValidators();
-
-    }
-    this.form.get('agency').updateValueAndValidity();
-    this.form.get('licence').updateValueAndValidity();
+    // if (this.isChecked) {
+    //   this.type = 1;
+    //   this.form.get('agency').setValidators([Validators.required]);
+    //   this.form.get('licence').setValidators([Validators.required]);
+    // } else {
+    //   this.type = 0;
+    //   this.form.get('agency').clearValidators();
+    //   this.form.get('licence').clearValidators();
+    // }
+    // this.form.get('agency').updateValueAndValidity();
+    // this.form.get('licence').updateValueAndValidity();
   }
 
   onImagePicked(event: Event) {
@@ -124,15 +135,20 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     if (this.form.invalid || !this.captcha) {
-      console.log("nesto jede kurac");
       return
     } else {
-      console.log("uslo");
-      this.userService.register(this.form.value.firstname, this.form.value.lastname, this.form.value.username,
-        this.form.value.password, this.form.value.city, this.form.value.birthday, this.form.value.phone, this.form.value.email,
-        this.form.value.agency, this.form.value.licence, this.type, this.form.value.image, this.approved).subscribe((resp) => {
-          this.router.navigate(['../landing']);
-        });
+      this.userService.checkUsername(this.form.value.username).subscribe((user:User)=>{
+        if(user){
+            this.taken=true;
+        }else{
+          this.userService.register(this.form.value.firstname, this.form.value.lastname, this.form.value.username,
+            this.form.value.password, this.form.value.city, this.form.value.birthday, this.form.value.phone, this.form.value.email,
+            this.form.value.agency, this.form.value.licence, this.type, this.form.value.image, this.approved).subscribe((resp) => {
+              this.router.navigate(['../landing']);
+            });
+        }
+      })
+   
 
     }
   }

@@ -21,7 +21,7 @@ export class RealestateService {
   add(title, type, rooms, city, municipality, microlocation,
     street, price, square, state, year, heating, floor, maxfloor, desc,
     terrace, loggia, balcony, elevator, basement, garage, garden, ac, internet, intercom, phone,
-    image1, image2, image3, image4, image5, image6) {
+    image1, image2, image3, image4, image5, image6, seller) {
 
     const postData = new FormData();
     postData.append("title", title);
@@ -50,17 +50,21 @@ export class RealestateService {
     postData.append("internet", internet);
     postData.append("intercom", intercom);
     postData.append("phone", phone);
+    postData.append("seller" ,seller);
     postData.append("images", image1);
     postData.append("images", image2);
     postData.append("images", image3);
     if (image4 != null) {
+      console.log("smor");
       postData.append("images", image4);
     }
     if (image5 != null) {
+      console.log("smor");
       postData.append("images", image5);
     }
 
     if (image5 != null) {
+      console.log("smor");
       postData.append("images", image6);
     }
 

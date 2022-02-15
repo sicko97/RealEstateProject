@@ -2,7 +2,7 @@ export class ArrayJSON {
     Name : string;
     City : string;
     Municipality: string;
-    microlocation : string;
+    Microlocation : string;
     Street : string;
     Area : Number;
     Rooms : Number;

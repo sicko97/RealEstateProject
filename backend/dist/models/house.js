@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 let House = new Schema({
+    _id: {
+        type: mongoose_1.default.Schema.Types.ObjectId
+    },
     title: {
         type: String
     },
@@ -105,6 +108,9 @@ let House = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    seller: {
+        type: String
     }
 });
 exports.default = mongoose_1.default.model('House', House, 'realestate');

@@ -8,7 +8,7 @@
             <input type="file" hidden #filePicker (change)="uploadFile($event)" />
             <span>{{jsonName}}</span>
 
-
+            <div class = "images" *ngIf="selectedValidJSON">
             <h1>Images</h1>
             <span>(at least 3)</span>
             <div class="first3">
@@ -73,6 +73,7 @@
 
                 </div>
             </div>
+        </div>
 
         
             <button mat-raised-button type="submit" >Add</button>

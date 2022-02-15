@@ -31,4 +31,5 @@ export class House {
     image4: string;
     image5: string;
     image6: string;
+    seller : string;
 }

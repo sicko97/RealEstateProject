@@ -1,4 +1,5 @@
 import e, * as express from 'express';
+import mongoose from 'mongoose';
 import House from '../models/house';
 
 export class RealEstateController {
@@ -51,7 +52,8 @@ export class RealEstateController {
             image3: url + "/images/" + images[2].filename,
             image4: url + "/images/" + this.image4,
             image5: url + "/images/" + this.image5,
-            image6: url + "/images/" + this.image6
+            image6: url + "/images/" + this.image6,
+            seller : req.body.seller
         })
         console.log("doslo do registracije");
         house.save().then(house => {
@@ -60,6 +62,10 @@ export class RealEstateController {
             res.status(400).json({ 'message': err })
         })
 
+    }
+
+    findById= (req: express.Request , res: express.Response)=>{
+        House.find({'_id' :new mongoose.Schema.Types.ObjectId("54524542542542")})
     }
 
     getAll = (req: express.Request, res: express.Response) => {
