@@ -8,6 +8,7 @@ export class RealestateService {
 
   constructor(private http: HttpClient) { }
 
+  detailedRealEstateId: string;
 
   getAll() {
     return this.http.get('http://localhost:4000/realestate/getAll');
@@ -50,7 +51,7 @@ export class RealestateService {
     postData.append("internet", internet);
     postData.append("intercom", intercom);
     postData.append("phone", phone);
-    postData.append("seller" ,seller);
+    postData.append("seller", seller);
     postData.append("images", image1);
     postData.append("images", image2);
     postData.append("images", image3);
@@ -73,12 +74,18 @@ export class RealestateService {
 
   }
 
-  binance() {
-    return this.http.get(`https://api.binance.com/api/v3/exchangeInfo?symbol=${"BTCUSDT"}`);
+  setDetailedRealEstateId(id) {
+   
+    this.detailedRealEstateId = id;
   }
 
-  coingecko() {
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${"usd"}&ids=${"bitcoin"}`);
+  getDetailedRealEstateId(): string {
+    
+    return this.detailedRealEstateId;
+  }
+
+  getRealEstateById(id){
+    return this.http.get(`http://localhost:4000/realestate/getById?id=${id}`);
   }
 
 }

@@ -141,6 +141,7 @@ export class UserController {
             if (err){
                 console.log(err);
             }else{
+                console.log(user);
                 res.json(user);
             }
         })

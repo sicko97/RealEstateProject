@@ -1,4 +1,5 @@
 export class House {
+    _id : string;
     title: string;
     type: string;
     rooms: Number;

@@ -126,6 +126,7 @@ class UserController {
                     console.log(err);
                 }
                 else {
+                    console.log(user);
                     res.json(user);
                 }
             });

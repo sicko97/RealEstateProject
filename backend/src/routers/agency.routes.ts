@@ -14,5 +14,8 @@ agencyRouter.route('/getAll').get(
     (req,res) => new AgencyController().getAll(req,res)
 )
 
+agencyRouter.route('/getOne').get(
+    (req,res)=> new AgencyController().getOne(req,res)
+)
 
 export default agencyRouter;

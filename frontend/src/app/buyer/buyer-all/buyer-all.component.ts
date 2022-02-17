@@ -9,6 +9,7 @@ import { Municipality } from 'src/app/models/municipality';
 import { LocationService } from 'src/app/services/location.service';
 import { RealestateService } from 'src/app/services/realestate.service';
 import { Location } from 'src/app/models/location';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buyer-all',
@@ -39,15 +40,12 @@ export class BuyerAllComponent implements OnInit {
 
   constructor(private realestateService: RealestateService,
     private changeDetectorRef: ChangeDetectorRef,
-    private locationService: LocationService) { }
+    private locationService: LocationService,
+    private router : Router) { }
 
 
 
   ngOnInit(): void {
-
-    this.realestateService.coingecko().subscribe(()=>{
-
-    });
 
     this.locationService.getAllCities().subscribe((cities: City[]) => {
       this.cities = cities;
@@ -100,6 +98,11 @@ export class BuyerAllComponent implements OnInit {
     .subscribe((filteredHouses:House[])=>{
       this.dataSource.data = filteredHouses;
   })
+}
+
+details(_id){
+    this.realestateService.setDetailedRealEstateId(_id);
+    this.router.navigate(["buyer/houseDetails"]);
 }
 
 }

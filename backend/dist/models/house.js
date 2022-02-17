@@ -7,7 +7,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 let House = new Schema({
     _id: {
-        type: mongoose_1.default.Schema.Types.ObjectId
+        type: mongoose_1.default.Types.ObjectId
     },
     title: {
         type: String

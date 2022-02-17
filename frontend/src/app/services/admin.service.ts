@@ -23,6 +23,10 @@ export class AdminService {
     return this.http.post("http://localhost:4000/agency/add", data);
 
   }
+  
+  getAgency(name){
+    return this.http.get(`http://localhost:4000/agency/getOne?name=${name}`);
+  }
 
   getAll(){
 

@@ -24,6 +24,7 @@ class RealEstateController {
                 this.image6 = images[5].filename;
             }
             let house = new house_1.default({
+                _id: new mongoose_1.default.Types.ObjectId,
                 title: req.body.title,
                 type: req.body.type,
                 rooms: req.body.rooms,
@@ -66,7 +67,16 @@ class RealEstateController {
             });
         };
         this.findById = (req, res) => {
-            house_1.default.find({ '_id': new mongoose_1.default.Schema.Types.ObjectId("54524542542542") });
+            let id = req.query.id;
+            let arrayofId = [id];
+            house_1.default.findOne({ _id: id }, (err, house) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(house);
+                }
+            });
         };
         this.getAll = (req, res) => {
             house_1.default.find({}, (err, houses) => {

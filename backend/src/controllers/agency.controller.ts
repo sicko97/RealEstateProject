@@ -31,7 +31,18 @@ export class AgencyController{
                     res.json(agencies);
                 }
             })
+    }
 
+    getOne = (req:express.Request, res: express.Response)=>{
+        let name = req.query.name;
+
+        Agency.findOne({'name' : name},(err,agency)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.json(agency);
+            }
+        })
     }
 
 

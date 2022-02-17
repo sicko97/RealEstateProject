@@ -1,0 +1,137 @@
+<div class="container">
+
+    <h1>{{house.title}}</h1>
+    <h4>{{house.city}}-{{house.municipality}}-{{house.microlocation}}</h4>
+
+    <ngb-carousel>
+        <ng-template ngbSlide *ngIf="house.image1.length>30">
+            <div class="picsum-img-wrapper">
+                <img [src]="house.image1" alt="Random first slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>{{house.image1.length}}</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide *ngIf="house.image2.length>30">
+            <div class="picsum-img-wrapper">
+                <img [src]="house.image2" alt="Random second slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>{{house.image4.length}}</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide *ngIf="house.image3.length>30">
+            <div class="picsum-img-wrapper">
+                <img [src]="house.image3" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide *ngIf="house.image4.length>30">
+            <div class="picsum-img-wrapper">
+                <img [src]="house.image4" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide *ngIf="house.image5.length>30">
+            <div class="picsum-img-wrapper">
+                <img [src]="house.image4" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide *ngIf="house.image6.length>30">
+            <div class="picsum-img-wrapper">
+                <img [src]="house.image4" alt="Random third slide">
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+    <span class="price">{{house.price}}e</span>
+
+    <div class="smallCards">
+        <mat-card>Type:{{house.type}}</mat-card>
+        <mat-card>Area:{{house.square}}m2</mat-card>
+        <mat-card>Rooms:{{house.rooms}}</mat-card>
+    </div>
+    <h2>Details</h2>
+    <div class="details">
+
+        <div class="left">
+            <span><b>Construction year</b> : {{house.year}}</span>
+            <span><b>State</b> : {{house.state}}</span>
+            <span><b>Heating</b> : {{house.heating}}</span>
+        </div>
+
+        <div class="right">
+            <span><b>Floor</b>: {{house.floor}}</span>
+            <span><b>MaxFloor</b>: {{house.maxfloor}}</span>
+            <span><b>Parking</b>: {{house.floor}}</span>
+        </div>
+    </div>
+    <hr>
+    <h2>Descrpition</h2>
+    <div class="description">
+        <h4>{{house.desc}}</h4>
+    </div>
+
+    <hr>
+
+    <h2>Characteristics</h2>
+
+    <div class="characteristics">
+        <div class="leftCheck">
+            <mat-checkbox class="example-margin" name="terrace" [ngModel]="terrace">Terrace</mat-checkbox>
+            <mat-checkbox class="example-margin" name="loggia" [ngModel]="loggia">Loggia</mat-checkbox>
+            <mat-checkbox class="example-margin" name="balcony" [ngModel]="balcony">Balcony</mat-checkbox>
+            <mat-checkbox class="example-margin" name="elevator" [ngModel]="elevator">Elevator</mat-checkbox>
+        </div>
+        <div class="middleCheck">
+            <mat-checkbox class="example-margin" name="basement" [ngModel]="basement">Basement</mat-checkbox>
+            <mat-checkbox class="example-margin" name="garage" [ngModel]="garage">Gaarage</mat-checkbox>
+            <mat-checkbox class="example-margin" name="garden" [ngModel]="garden">Garden</mat-checkbox>
+            <mat-checkbox class="example-margin" name="ac" [ngModel]="ac">Ac</mat-checkbox>
+        </div>
+        <div class="rightCheck">
+            <mat-checkbox class="example-margin"  name="internet" [ngModel]="internet">Internet</mat-checkbox>
+            <mat-checkbox class="example-margin" name="intercom" [ngModel]="intercom">Intercom</mat-checkbox>
+            <mat-checkbox class="example-margin" name="phone" [ngModel]="phone">Phone</mat-checkbox>
+        </div>
+    </div>
+    <hr>
+    <h2>Seller</h2>
+    <div class="seller">
+        <div class="regular" *ngIf="agency.name==undefined">
+            <span><b>Firstname</b>:{{seller.firstname}}</span>
+            <span><b>Lastname</b>:{{seller.lastname}}</span>
+            <span><b>Phone</b>:{{seller.phone}}</span>
+        </div>
+        <div class="agent" *ngIf="agency.name!=undefined">
+            <span><b>Agency</b>:{{agency.name}}</span>
+            <span><b>Address</b>:{{agency.address}}</span>
+            <span><b>City</b>:{{agency.city}}</span>
+            <span><b>PIB</b>:{{agency.pib}}</span>
+            <span><b>Firstname</b>:{{seller.firstname}}</span>
+            <span><b>Lastname</b>:{{seller.lastname}}</span>
+            <span><b>Phone</b>:{{seller.phone}}</span>
+            
+        </div>
+
+    </div>
+    
+    <button type="button" (click)="back()" mat-raised-button>Back</button>
+
+</div>

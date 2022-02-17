@@ -16,6 +16,7 @@ import { AddmicroComponent } from './admin/addmicro/addmicro.component';
 import { AddmicroFormComponent } from './admin/addmicro-form/addmicro-form.component';
 import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
 import { AddjsonComponent } from './seller/addjson/addjson.component';
+import { HouseDetailsComponent } from './buyer/house-details/house-details.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
       },
       {
         path: "", redirectTo: "buyer-search", pathMatch: 'full'
+      },
+      {
+        path: "houseDetails", component:HouseDetailsComponent
       }
     ]
   },

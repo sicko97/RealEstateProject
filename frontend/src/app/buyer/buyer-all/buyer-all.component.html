@@ -83,6 +83,7 @@
                 </mat-card-header>
                 <img class="card-img" mat-card-image src={{house.image1}}>
                 <mat-card-content>
+                    {{house._id}}
                     SquareFootage : {{house.square}}
                     <br>
                     Rooms : {{house.rooms}}
@@ -96,7 +97,7 @@
 
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button>DETAILS</button>
+                    <button type="button" (click)="details(house._id)" mat-button>DETAILS</button>
                     <button mat-button>FAVORITE</button>
                 </mat-card-actions>
             </mat-card>

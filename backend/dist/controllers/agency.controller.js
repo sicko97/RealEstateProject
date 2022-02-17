@@ -31,6 +31,17 @@ class AgencyController {
                 }
             });
         };
+        this.getOne = (req, res) => {
+            let name = req.query.name;
+            agency_1.default.findOne({ 'name': name }, (err, agency) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(agency);
+                }
+            });
+        };
     }
 }
 exports.AgencyController = AgencyController;

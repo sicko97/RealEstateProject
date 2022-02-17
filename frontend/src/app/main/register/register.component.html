@@ -62,7 +62,7 @@
                 <mat-form-field >
                     <mat-label>Agencies</mat-label>
                     <mat-select name="city" formControlName="agency" >
-                        <mat-option *ngFor="let agency of agencies" [value]="agency">
+                        <mat-option *ngFor="let agency of agencies" [value]="agency.name">
                           {{agency.name}}
                         </mat-option>
                       </mat-select>

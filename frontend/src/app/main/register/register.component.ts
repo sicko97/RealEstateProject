@@ -109,18 +109,19 @@ export class RegisterComponent implements OnInit {
   onToggle(ob: MatSlideToggleChange) {
     this.isChecked = !this.isChecked;
 
-    // if (this.isChecked) {
-    //   this.type = 1;
+     if (this.isChecked) {
+       this.type = 1;
     //   this.form.get('agency').setValidators([Validators.required]);
     //   this.form.get('licence').setValidators([Validators.required]);
-    // } else {
-    //   this.type = 0;
+     } else {
+       this.type = 0;
     //   this.form.get('agency').clearValidators();
     //   this.form.get('licence').clearValidators();
     // }
     // this.form.get('agency').updateValueAndValidity();
     // this.form.get('licence').updateValueAndValidity();
   }
+}
 
   onImagePicked(event: Event) {
     this.file = (event.target as HTMLInputElement).files[0];

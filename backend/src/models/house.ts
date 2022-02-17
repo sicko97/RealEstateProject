@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 
 let House = new Schema({
     _id: {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Types.ObjectId
     },
     title: {
         type: String

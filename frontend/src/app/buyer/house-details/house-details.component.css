@@ -1,0 +1,95 @@
+ngb-carousel{
+    width:800px;
+    height:500px;
+}
+
+img {
+    width : 800px;
+    height:500px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.price{
+    font-size: 20pt;
+    font-weight: bold;
+    background-color: green;
+    margin: 8px;
+}
+
+.smallCards{
+    display: flex;
+    flex-direction: row;
+    margin : 10px;
+}
+
+mat-card{
+    margin :8px;
+}
+
+.details{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+span{
+    margin:10px;
+    font-size:15pt;
+}
+hr{
+    height:8px;
+    width:600px;
+}
+
+.characteristics{
+    margin : 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftCheck{
+    display: flex;
+    flex-direction: column;
+    margin : 8px;
+}
+
+.middleCheck{
+    display: flex;
+    flex-direction: column;
+    margin : 8px;
+}
+.rightCheck{
+    display: flex;
+    flex-direction: column;
+    margin : 8px;
+}
+
+.regular{
+    display: flex;
+    flex-direction: column;
+}
+
+.agent{
+    display: flex;
+    flex-direction: column;
+}

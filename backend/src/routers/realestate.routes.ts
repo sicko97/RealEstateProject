@@ -43,6 +43,10 @@ realEstateRouter.route('/getSimpleFilter').get(
     (req,res)=> new RealEstateController().getSimpleFilter(req,res)
 )
 
+realEstateRouter.route('/getById').get(
+    (req,res)=> new RealEstateController().findById(req,res)
+)
+
 
 
 export default realEstateRouter;

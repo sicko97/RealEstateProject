@@ -48,6 +48,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
 import { AddjsonComponent } from './seller/addjson/addjson.component';
+import { HouseDetailsComponent } from './buyer/house-details/house-details.component';
 
 
 
@@ -73,7 +74,8 @@ import { AddjsonComponent } from './seller/addjson/addjson.component';
     AddmicroComponent,
     AddmicroFormComponent,
     BuyerAllComponent,
-    AddjsonComponent
+    AddjsonComponent,
+    HouseDetailsComponent
   ],
   imports: [
     BrowserModule,

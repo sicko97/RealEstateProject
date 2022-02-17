@@ -32,5 +32,6 @@ const realEstateRouter = express_1.default.Router();
 realEstateRouter.route('/add').post((0, multer_1.default)({ storage: storage }).array("images"), (req, res) => new realestate_controller_1.RealEstateController().add(req, res));
 realEstateRouter.route('/getAll').get((req, res) => new realestate_controller_1.RealEstateController().getAll(req, res));
 realEstateRouter.route('/getSimpleFilter').get((req, res) => new realestate_controller_1.RealEstateController().getSimpleFilter(req, res));
+realEstateRouter.route('/getById').get((req, res) => new realestate_controller_1.RealEstateController().findById(req, res));
 exports.default = realEstateRouter;
 //# sourceMappingURL=realestate.routes.js.map
