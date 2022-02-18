@@ -10,6 +10,13 @@ export class RealestateService {
 
   detailedRealEstateId: string;
 
+  sell(id){
+    const data = {
+      id : id
+    }
+    return this.http.post('http://localhost:4000/realestate/sell',data);
+  }
+
   getAll() {
     return this.http.get('http://localhost:4000/realestate/getAll');
   }
@@ -22,7 +29,7 @@ export class RealestateService {
   add(title, type, rooms, city, municipality, microlocation,
     street, price, square, state, year, heating, floor, maxfloor, desc,
     terrace, loggia, balcony, elevator, basement, garage, garden, ac, internet, intercom, phone,
-    image1, image2, image3, image4, image5, image6, seller) {
+    image1, image2, image3, image4, image5, image6, seller, sold) {
 
     const postData = new FormData();
     postData.append("title", title);
@@ -52,6 +59,7 @@ export class RealestateService {
     postData.append("intercom", intercom);
     postData.append("phone", phone);
     postData.append("seller", seller);
+    postData.append("sold", sold);
     postData.append("images", image1);
     postData.append("images", image2);
     postData.append("images", image3);
@@ -75,17 +83,25 @@ export class RealestateService {
   }
 
   setDetailedRealEstateId(id) {
-   
+
     this.detailedRealEstateId = id;
   }
 
   getDetailedRealEstateId(): string {
-    
+
     return this.detailedRealEstateId;
   }
 
-  getRealEstateById(id){
+  getRealEstateById(id) {
     return this.http.get(`http://localhost:4000/realestate/getById?id=${id}`);
+  }
+
+  getLastFive() {
+    return this.http.get("http://localhost:4000/realestate/getLastFive");
+  }
+
+  getBySeller(seller) {
+    return this.http.get(`http://localhost:4000/realestate/getBySeller?seller=${seller}`)
   }
 
 }

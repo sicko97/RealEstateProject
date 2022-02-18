@@ -33,4 +33,5 @@ export class House {
     image5: string;
     image6: string;
     seller : string;
+    sold : boolean;
 }

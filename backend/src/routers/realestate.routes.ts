@@ -36,17 +36,28 @@ realEstateRouter.route('/add').post(
 );
 
 realEstateRouter.route('/getAll').get(
-    (req,res)=> new RealEstateController().getAll(req,res)
+    (req, res) => new RealEstateController().getAll(req, res)
 )
 
 realEstateRouter.route('/getSimpleFilter').get(
-    (req,res)=> new RealEstateController().getSimpleFilter(req,res)
+    (req, res) => new RealEstateController().getSimpleFilter(req, res)
 )
 
 realEstateRouter.route('/getById').get(
-    (req,res)=> new RealEstateController().findById(req,res)
+    (req, res) => new RealEstateController().findById(req, res)
 )
 
+realEstateRouter.route('/getLastFive').get(
+    (req, res) => new RealEstateController().getLastFive(req, res)
+)
+
+realEstateRouter.route('/getBySeller').get(
+    (req,res) => new RealEstateController().getBySeller(req,res)
+)
+
+realEstateRouter.route('/sell').post(
+    (req,res) => new RealEstateController().sell(req,res)
+)
 
 
 export default realEstateRouter;

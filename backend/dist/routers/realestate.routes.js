@@ -33,5 +33,8 @@ realEstateRouter.route('/add').post((0, multer_1.default)({ storage: storage }).
 realEstateRouter.route('/getAll').get((req, res) => new realestate_controller_1.RealEstateController().getAll(req, res));
 realEstateRouter.route('/getSimpleFilter').get((req, res) => new realestate_controller_1.RealEstateController().getSimpleFilter(req, res));
 realEstateRouter.route('/getById').get((req, res) => new realestate_controller_1.RealEstateController().findById(req, res));
+realEstateRouter.route('/getLastFive').get((req, res) => new realestate_controller_1.RealEstateController().getLastFive(req, res));
+realEstateRouter.route('/getBySeller').get((req, res) => new realestate_controller_1.RealEstateController().getBySeller(req, res));
+realEstateRouter.route('/sell').post((req, res) => new realestate_controller_1.RealEstateController().sell(req, res));
 exports.default = realEstateRouter;
 //# sourceMappingURL=realestate.routes.js.map

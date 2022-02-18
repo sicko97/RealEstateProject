@@ -134,14 +134,13 @@ export class UserController {
         })
     }
 
-    checkUsername = (req : express.Request , res: express.Response) =>{
+    checkUsername = (req: express.Request, res: express.Response) => {
         let username = req.query.username;
 
-        User.findOne({'username' : username}, (err,user)=>{
-            if (err){
+        User.findOne({ 'username': username }, (err, user) => {
+            if (err) {
                 console.log(err);
-            }else{
-                console.log(user);
+            } else {
                 res.json(user);
             }
         })

@@ -17,6 +17,7 @@ import { AddmicroFormComponent } from './admin/addmicro-form/addmicro-form.compo
 import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
 import { AddjsonComponent } from './seller/addjson/addjson.component';
 import { HouseDetailsComponent } from './buyer/house-details/house-details.component';
+import { SellerHousesComponent } from './seller/seller-houses/seller-houses.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,12 @@ const routes: Routes = [
   {
     path: 'seller', component: SellernavComponent,
     children: [
+      {
+        path: "houses", component: SellerHousesComponent
+      },
+      {
+        path: "", redirectTo: "houses", pathMatch: 'full'
+      },
       {
         path: 'addhouse', component: AddhouseComponent
       },

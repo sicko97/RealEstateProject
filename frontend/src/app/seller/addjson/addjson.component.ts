@@ -201,7 +201,7 @@ export class AddjsonComponent implements OnInit {
             this.realEstateService.add(title, json.Name, json.Rooms, json.City, json.Municipality, json.Microlocation,
               json.Street, json.Price, json.Area, json.State, json.ConstructionYear, json.Heating, json.Floor, json.TotalFloors,
               json.About, terrace, loggia, balcony, elevator, basement, garage, garden, ac, internet, intercom, phone,
-              this.file1, this.file2, this.file3, this.file4, this.file5, this.file6,JSON.parse(sessionStorage.getItem('user')).username).subscribe(() => {
+              this.file1, this.file2, this.file3, this.file4, this.file5, this.file6,JSON.parse(sessionStorage.getItem('user')).username,false).subscribe(() => {
 
               });
 

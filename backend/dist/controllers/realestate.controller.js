@@ -135,6 +135,33 @@ class RealEstateController {
                 }
             });
         };
+        this.getLastFive = (req, res) => {
+            house_1.default.find({}, null, { limit: 5, sort: { 'date': -1 } }, (err, houses) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(houses);
+                }
+            });
+        };
+        this.getBySeller = (req, res) => {
+            let seller = req.query.seller;
+            house_1.default.find({ 'seller': seller }, (err, houses) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(houses);
+                }
+            });
+        };
+        this.sell = (req, res) => {
+            let id = req.body.id;
+            console.log(id);
+            house_1.default.collection.updateOne({ _id: new mongoose_1.default.Types.ObjectId(id) }, { $set: { sold: true } });
+            res.json({ 'message': 'ok' });
+        };
     }
 }
 exports.RealEstateController = RealEstateController;

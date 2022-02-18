@@ -111,6 +111,9 @@ let House = new Schema({
     },
     seller: {
         type: String
+    },
+    sold: {
+        type: Boolean
     }
 })
 

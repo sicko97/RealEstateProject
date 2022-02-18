@@ -21,7 +21,7 @@ export class RealEstateController {
             this.image6 = images[5].filename;
         }
         let house = new House({
-            _id : new mongoose.Types.ObjectId,
+            _id: new mongoose.Types.ObjectId,
             title: req.body.title,
             type: req.body.type,
             rooms: req.body.rooms,
@@ -154,5 +154,37 @@ export class RealEstateController {
                 res.json(houses);
             }
         });
+    }
+
+    getLastFive = (req: express.Request, res: express.Response) => {
+
+        House.find({}, null, { limit: 5, sort: { 'date': -1 } }, (err, houses) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(houses);
+            }
+        })
+    }
+
+
+    getBySeller = (req: express.Request, res: express.Response) => {
+
+        let seller = req.query.seller;
+
+        House.find({ 'seller': seller }, (err, houses) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(houses);
+            }
+        })
+    }
+
+    sell = (req: express.Request, res: express.Response) => {
+        let id = req.body.id;
+        console.log(id);
+        House.collection.updateOne({ _id: new mongoose.Types.ObjectId(id) }, { $set: { sold: true } });
+        res.json({ 'message': 'ok' });
     }
 }

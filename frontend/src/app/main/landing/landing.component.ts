@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { House } from 'src/app/models/house';
+import { RealestateService } from 'src/app/services/realestate.service';
 
 
 @Component({
@@ -12,10 +14,15 @@ export class LandingComponent implements OnInit {
  
   username :String;
   password: String;
+  houses : House[];
 
-  constructor(private router : Router) { }
+  constructor(private router : Router,
+     private realEstateService:RealestateService) { }
 
   ngOnInit(): void {
+    this.realEstateService.getLastFive().subscribe((houses:House[])=>{
+        this.houses = houses;
+    })
   }
 
 //Login
