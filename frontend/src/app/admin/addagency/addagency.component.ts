@@ -55,6 +55,9 @@ export class AddagencyComponent implements OnInit {
         this.form.value.phone, this.form.value.pib).subscribe((resp) => {
           this.form.reset();
         });
+
+      this.router.navigate(['/admin']);
+
     }
 
   }

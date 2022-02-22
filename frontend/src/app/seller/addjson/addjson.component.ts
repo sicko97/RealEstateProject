@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HouseJSON } from 'src/app/models/HouseJSON';
 import { RealestateService } from 'src/app/services/realestate.service';
 import { mimeType } from '../../main/register/mime-type.validator';
@@ -10,8 +11,10 @@ import { mimeType } from '../../main/register/mime-type.validator';
 })
 export class AddjsonComponent implements OnInit {
 
-  constructor(private realEstateService: RealestateService) { }
-  form: FormGroup;
+  constructor(private realEstateService: RealestateService,
+    private router: Router) { }
+  form1: FormGroup;
+  form2: FormGroup;
   houseJSON: HouseJSON;
   selectedValidJSON: boolean = false;
   selectedJSON;
@@ -30,24 +33,32 @@ export class AddjsonComponent implements OnInit {
   imagePreview6: String;
   ngOnInit(): void {
 
-    this.form = new FormGroup({
+    this.form1 = new FormGroup({
+      'json': new FormControl(null, {
+        validators: [
+          Validators.required
+        ]
+      })
+    });
+
+    this.form2 = new FormGroup({
       'image1': new FormControl(null, {
         validators: [
           Validators.required
-        ],
-        asyncValidators: [mimeType]
+        ]
+
       }),
       'image2': new FormControl(null, {
         validators: [
           Validators.required
-        ],
-        asyncValidators: [mimeType]
+        ]
+
       }),
       'image3': new FormControl(null, {
         validators: [
           Validators.required
-        ],
-        asyncValidators: [mimeType]
+        ]
+
       }),
       'image4': new FormControl(null, {
 
@@ -64,73 +75,95 @@ export class AddjsonComponent implements OnInit {
 
   onImagePicked1(event: Event) {
     this.file1 = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image1: this.file1 });
-    this.form.get('image1').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file1);
-    reader.onload = () => {
-      // this.imagePreview1 = (reader.result as String);
-      this.imagePreview1 = (event.target as HTMLInputElement).files[0].name;
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+      this.form2.patchValue({ image1: this.file1 });
+      this.form2.get('image1').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file1);
+      reader.onload = () => {
+        this.imagePreview1 = (reader.result as String);
+      }
     }
   }
   onImagePicked2(event: Event) {
     this.file2 = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image2: this.file2 });
-    this.form.get('image2').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file2);
-    reader.onload = () => {
-      this.imagePreview2 = (reader.result as String);
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+      alert("Valid File Format");
+      this.form2.patchValue({ image2: this.file2 });
+      this.form2.get('image2').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file2);
+      reader.onload = () => {
+        this.imagePreview2 = (reader.result as String);
+      }
     }
+    else {
+      alert("Invalid File Format");
+    }
+
   }
   onImagePicked3(event: Event) {
     this.file3 = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image3: this.file3 });
-    this.form.get('image3').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file3);
-    reader.onload = () => {
-      this.imagePreview3 = (reader.result as String);
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+      this.form2.patchValue({ image3: this.file3 });
+      this.form2.get('image3').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file3);
+      reader.onload = () => {
+        this.imagePreview3 = (reader.result as String);
+      }
     }
   }
   onImagePicked4(event: Event) {
     this.file4 = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image4: this.file4 });
-    this.form.get('image4').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file4);
-    reader.onload = () => {
-      this.imagePreview4 = (reader.result as String);
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+      this.form2.patchValue({ image4: this.file4 });
+      this.form2.get('image4').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file4);
+      reader.onload = () => {
+        this.imagePreview4 = (reader.result as String);
+      }
     }
   }
   onImagePicked5(event: Event) {
     this.file5 = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image5: this.file5 });
-    this.form.get('image5').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file5);
-    reader.onload = () => {
-      this.imagePreview5 = (reader.result as String);
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+      this.form2.patchValue({ image5: this.file5 });
+      this.form2.get('image5').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file5);
+      reader.onload = () => {
+        this.imagePreview5 = (reader.result as String);
+      }
     }
   }
   onImagePicked6(event: Event) {
-    this.file6 = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image6: this.file6 });
-    this.form.get('image6').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file6);
-    reader.onload = () => {
-      this.imagePreview6 = (reader.result as String);
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+      this.file6 = (event.target as HTMLInputElement).files[0];
+      this.form2.patchValue({ image6: this.file6 });
+      this.form2.get('image6').updateValueAndValidity();
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file6);
+      reader.onload = () => {
+        this.imagePreview6 = (reader.result as String);
+      }
     }
   }
 
 
   onSubmit() {
-    if (this.form.invalid) {
-    
+    if (this.form2.invalid) {
+
       return
     } else {
-  
+
       let terrace = false;
       let loggia = false;
       let balcony = false;
@@ -190,22 +223,26 @@ export class AddjsonComponent implements OnInit {
             break;
           }
         }
-      }  
+      }
       );
-           
 
-            const json = this.houseJSON.Realestate;
 
-            let title = json.Name + json.City;
+      const json = this.houseJSON.Realestate;
 
-            this.realEstateService.add(title, json.Name, json.Rooms, json.City, json.Municipality, json.Microlocation,
-              json.Street, json.Price, json.Area, json.State, json.ConstructionYear, json.Heating, json.Floor, json.TotalFloors,
-              json.About, terrace, loggia, balcony, elevator, basement, garage, garden, ac, internet, intercom, phone,
-              this.file1, this.file2, this.file3, this.file4, this.file5, this.file6,JSON.parse(sessionStorage.getItem('user')).username,false).subscribe(() => {
+      let title = json.Name + json.City;
 
-              });
+      this.realEstateService.add(title, json.Name, json.Rooms, json.City, json.Municipality, json.Microlocation,
+        json.Street, json.Price, json.Area, json.State, json.ConstructionYear, json.Heating, json.Floor, json.TotalFloors,
+        json.About, terrace, loggia, balcony, elevator, basement, garage, garden, ac, internet, intercom, phone,
+        this.file1, this.file2, this.file3, this.file4, this.file5, this.file6, JSON.parse(sessionStorage.getItem('user')).username, false).subscribe(() => {
 
-      
+        });
+      for (let i = 0; i < 100000; i++) {
+        for (let j = 0; j < 10000; j++) {
+
+        }
+      }
+      this.router.navigate(['/seller']);
     }
   }
 
@@ -219,14 +256,21 @@ export class AddjsonComponent implements OnInit {
         this.houseJSON = (JSON.parse(fileReader.result.toString()));
       } catch (e) {
         this.jsonName = "INVALID JSON!";
+        this.form1.patchValue({ json: undefined });
+        this.form1.get('json').updateValueAndValidity();
         return;
       }
       this.selectedValidJSON = true;
-      alert(this.houseJSON.Realestate.Characteristics);
+      this.form1.patchValue({ json: this.selectedJSON });
+      this.form1.get('json').updateValueAndValidity();
     }
     // fileReader.onerror=(error)=>{
     //   this.jsonName = "Invalid JSON";
     // }
+  }
+
+  back(){
+    this.router.navigate(['/seller']);
   }
 
 }

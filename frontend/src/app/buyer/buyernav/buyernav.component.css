@@ -45,3 +45,15 @@ a{
 }
 
 
+@media only screen and (max-width: 800px){
+  a{
+    font-size: 10pt;
+    margin:2px;
+  }
+  h1{
+    font-size: 15pt;
+  }
+
+}
+
+

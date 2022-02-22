@@ -1,5 +1,12 @@
+.background{
+  background-image: url("/assets/high-resolution-new-york-city-skyline-panorama-vast-xl.jpg");
+  background-size:cover;
+  height: 100%;
+ 
+  overflow: hidden;
+}
 .container{
-    width : 47%;
+    width : 47%;   
   } 
   
   .title{

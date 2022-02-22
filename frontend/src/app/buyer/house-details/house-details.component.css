@@ -15,12 +15,19 @@ img {
     flex-direction: column;
 }
 
-.price{
+.price1{
     font-size: 20pt;
     font-weight: bold;
     background-color: green;
     margin: 8px;
 }
+.price2{
+    font-size: 20pt;
+    font-weight: bold;
+   
+    margin: 8px;
+}
+
 
 .smallCards{
     display: flex;
@@ -92,4 +99,15 @@ hr{
 .agent{
     display: flex;
     flex-direction: column;
+}
+
+button{
+    margin : 10px;
+}
+
+@media only screen and (max-width: 800px){
+    ngb-carousel{
+        width:600px;
+        height:500px;
+    }
 }

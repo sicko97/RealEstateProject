@@ -17,7 +17,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { BuyernavComponent } from './buyer/buyernav/buyernav.component';
-import { BuyerSearchComponent } from './buyer/buyer-search/buyer-search.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -49,6 +48,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { BuyerAllComponent } from './buyer/buyer-all/buyer-all.component';
 import { AddjsonComponent } from './seller/addjson/addjson.component';
 import { HouseDetailsComponent } from './buyer/house-details/house-details.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -57,7 +58,6 @@ import { HouseDetailsComponent } from './buyer/house-details/house-details.compo
     AppComponent,
     LandingComponent,
     BuyernavComponent,
-    BuyerSearchComponent,
     HeaderComponent,
     FooterComponent,
     LoginComponent,
@@ -105,7 +105,9 @@ import { HouseDetailsComponent } from './buyer/house-details/house-details.compo
     ReactiveFormsModule,
     RecaptchaModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatStepperModule
   ],
   providers: [
     

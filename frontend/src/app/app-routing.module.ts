@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddagencyComponent } from './admin/addagency/addagency.component';
 import { AdminapproveComponent } from './admin/adminapprove/adminapprove.component';
 import { AdminnavComponent } from './admin/adminnav/adminnav.component';
-import { BuyerSearchComponent } from './buyer/buyer-search/buyer-search.component';
 import { BuyernavComponent } from './buyer/buyernav/buyernav.component';
 import { EdituserComponent } from './admin/edituser/edituser.component';
 import { LandingComponent } from './main/landing/landing.component';

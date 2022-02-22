@@ -114,6 +114,9 @@ let House = new Schema({
     },
     sold: {
         type: Boolean
+    },
+    avgPrice :{
+        type:Number
     }
 })
 

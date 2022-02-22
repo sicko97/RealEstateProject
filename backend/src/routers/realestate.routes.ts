@@ -59,5 +59,9 @@ realEstateRouter.route('/sell').post(
     (req,res) => new RealEstateController().sell(req,res)
 )
 
+realEstateRouter.route('/updateAvgPrice').post(
+    (req,res) => new RealEstateController().updateAvgPrice(req,res)
+)
+
 
 export default realEstateRouter;

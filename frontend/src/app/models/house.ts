@@ -1,5 +1,5 @@
 export class House {
-    _id : string;
+    _id: string;
     title: string;
     type: string;
     rooms: Number;
@@ -7,8 +7,8 @@ export class House {
     municipality: string;
     microlocation: string;
     street: string;
-    price: Number;
-    square: Number;
+    price: number;
+    square: number;
     state: string;
     year: Number;
     heating: string;
@@ -32,6 +32,7 @@ export class House {
     image4: string;
     image5: string;
     image6: string;
-    seller : string;
-    sold : boolean;
+    seller: string;
+    sold: boolean;
+    avgPrice: number;
 }

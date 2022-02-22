@@ -54,7 +54,8 @@ export class RealEstateController {
             image4: url + "/images/" + this.image4,
             image5: url + "/images/" + this.image5,
             image6: url + "/images/" + this.image6,
-            seller: req.body.seller
+            seller: req.body.seller,
+            sold: req.body.sold
         })
         console.log("doslo do registracije");
         house.save().then(house => {
@@ -78,7 +79,7 @@ export class RealEstateController {
     }
 
     getAll = (req: express.Request, res: express.Response) => {
-        House.find({}, (err, houses) => {
+        House.find({ 'sold': false }, (err, houses) => {
             if (err) {
                 console.log(err);
             } else {
@@ -105,15 +106,11 @@ export class RealEstateController {
             price?: Object;
             square?: Object;
             rooms?: Object;
+            sold?: boolean;
 
         } = {};
 
-        let filters = {
-            type: type,
-            city: city,
-            municipality: municipality,
-            microlocation: microlocation
-        }
+        queryObj.sold = false;
 
         // item = {};
 
@@ -158,7 +155,7 @@ export class RealEstateController {
 
     getLastFive = (req: express.Request, res: express.Response) => {
 
-        House.find({}, null, { limit: 5, sort: { 'date': -1 } }, (err, houses) => {
+        House.find({ 'sold': false }, null, { limit: 5, sort: { 'date': -1 } }, (err, houses) => {
             if (err) {
                 console.log(err);
             } else {
@@ -185,6 +182,13 @@ export class RealEstateController {
         let id = req.body.id;
         console.log(id);
         House.collection.updateOne({ _id: new mongoose.Types.ObjectId(id) }, { $set: { sold: true } });
+        res.json({ 'message': 'ok' });
+    }
+
+    updateAvgPrice = (req: express.Request, res: express.Response) => {
+        let id = req.body.id;
+        let avgPrice = req.body.avgPrice;
+        House.collection.updateOne({ _id: new mongoose.Types.ObjectId(id) }, { $set: { avgPrice: avgPrice } });
         res.json({ 'message': 'ok' });
     }
 }

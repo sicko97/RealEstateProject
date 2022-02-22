@@ -41,7 +41,7 @@ class LocationController {
             });
         };
         this.getMunicipalities = (req, res) => {
-            let city = req.params.city;
+            let city = req.query.city;
             municipality_1.default.find({ 'city': city }, (err, municipalities) => {
                 if (err) {
                     console.log(err);
@@ -52,8 +52,8 @@ class LocationController {
             });
         };
         this.getMicrolocation = (req, res) => {
-            let city = req.params.city;
-            let municipality = req.params.municipality;
+            let city = req.query.city;
+            let municipality = req.query.municipality;
             location_1.default.find({ 'city': city, 'municipality': municipality }, (err, microlocations) => {
                 if (err) {
                     console.log(err);
@@ -74,6 +74,16 @@ class LocationController {
                 res.status(200).json({ 'message': 'location added' });
             }).catch(err => {
                 res.status(400).json({ 'message': err });
+            });
+        };
+        this.getAllMunicipalities = (req, res) => {
+            municipality_1.default.find({}, (err, municipalities) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.json(municipalities);
+                }
             });
         };
     }

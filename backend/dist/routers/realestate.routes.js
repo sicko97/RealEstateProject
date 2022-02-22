@@ -36,5 +36,6 @@ realEstateRouter.route('/getById').get((req, res) => new realestate_controller_1
 realEstateRouter.route('/getLastFive').get((req, res) => new realestate_controller_1.RealEstateController().getLastFive(req, res));
 realEstateRouter.route('/getBySeller').get((req, res) => new realestate_controller_1.RealEstateController().getBySeller(req, res));
 realEstateRouter.route('/sell').post((req, res) => new realestate_controller_1.RealEstateController().sell(req, res));
+realEstateRouter.route('/updateAvgPrice').post((req, res) => new realestate_controller_1.RealEstateController().updateAvgPrice(req, res));
 exports.default = realEstateRouter;
 //# sourceMappingURL=realestate.routes.js.map

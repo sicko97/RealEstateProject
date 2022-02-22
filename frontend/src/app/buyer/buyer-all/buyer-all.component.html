@@ -41,7 +41,7 @@
                             <mat-form-field>
                                 <mat-label *ngIf="municipalitySelected ==true">Microlocation</mat-label>
                                 <mat-label *ngIf="municipalitySelected ==false">Pick municipality</mat-label>
-                                <mat-select name="microlocation" (selectionChange)="changeMunicipality($event)"
+                                <mat-select name="microlocation" (selectionChange)="changeMicrolocation($event)"
                                     [(ngModel)]='microlocation'>
                                     <mat-option *ngFor="let microlocation of microlocations"
                                         [value]="microlocation.microlocation">
@@ -83,7 +83,7 @@
                 </mat-card-header>
                 <img class="card-img" mat-card-image src={{house.image1}}>
                 <mat-card-content>
-                    {{house._id}}
+
                     SquareFootage : {{house.square}}
                     <br>
                     Rooms : {{house.rooms}}
@@ -94,10 +94,12 @@
                     <br>
                     <p class="description">{{house.desc}}</p>
                     Price : {{house.price}}
+                    <br>
+                    Avarage price per square foot : {{house.avgPrice}}
 
                 </mat-card-content>
                 <mat-card-actions>
-                    <button type="button" (click)="details(house._id)" mat-button>DETAILS</button>
+                    <button type="button" (click)="details(house._id,house.avgPrice)" mat-button>DETAILS</button>
                     <button mat-button>FAVORITE</button>
                 </mat-card-actions>
             </mat-card>

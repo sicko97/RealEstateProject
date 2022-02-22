@@ -10,39 +10,43 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router : Router, private userService : UserService) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
-  username : string;
-  password : string;
+  username: string;
+  password: string;
 
-  message : string;
+  message: string;
 
-  login(){
-    this.userService.login(this.username , this.password).subscribe((user :User) => {
-        if(user){
-          if(user.type == 0){
-          this.router.navigate(['buyer']);
+  login() {
+    this.userService.login(this.username, this.password).subscribe((user: User) => {
+      if (user) {
+        if (user.approved == 0 || user.approved == 2) {
+          this.message = "Unapproved user";
+        } else {
+          if (user.type == 0) {
+            this.router.navigate(['buyer']);
           }
-          if(user.type == 1){
+          if (user.type == 1) {
             this.router.navigate(['seller']);
           }
-          if(user.type==2){
+          if (user.type == 2) {
             this.router.navigate(['admin']);
           }
-          sessionStorage.setItem('user',JSON.stringify(user));
-        }else{
-            this.message= "Wrong username or password";
+          sessionStorage.setItem('user', JSON.stringify(user));
         }
+      } else {
+        this.message = "Wrong username or password";
+      }
     })
   }
 
 
-  back() : void{
+  back(): void {
     this.router.navigate(['landing']);
   }
-  
+
 
 }

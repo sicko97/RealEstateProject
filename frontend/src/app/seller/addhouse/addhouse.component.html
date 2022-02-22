@@ -2,7 +2,7 @@
     <div class='wrapper'>
         <form class='loginForm' [formGroup]="form" (submit)="onRegister()">
             <h1>Add RealEstate </h1>
-           
+
             <div class="title">
                 <mat-form-field class='inputText'>
                     <mat-label>Title</mat-label>
@@ -146,72 +146,76 @@
 
             <h3>Images</h3>
             <span>(at least 3)</span>
-            <div class="first3">
-                <div class="upload">
-                    <button mat-stroked-button type="button" (click)="filePicker1.click()">
-                        Image1
-                    </button>
-                    <img class='preview' [src]="imagePreview1" [alt]="form.value.image1"
-                        *ngIf="imagePreview1 !== '' && imagePreview1 && form.get('image1').valid">
-                    <input type="file" #filePicker1 (change)="onImagePicked1($event)">
+            <div class="images">
+                <div class="first3">
+                    <div class="upload">
+                        <button mat-stroked-button type="button" (click)="filePicker1.click()">
+                            Image1
+                        </button>
+                        <img class='preview' [src]="imagePreview1" [alt]="form.value.image1"
+                            *ngIf="imagePreview1 !== '' && imagePreview1 && form.get('image1').valid">
+                        <input type="file" hidden #filePicker1 (change)="onImagePicked1($event)">
 
+                    </div>
+                    <div class="upload">
+                        <button mat-stroked-button type="button" (click)="filePicker2.click()">
+                            Image2
+                        </button>
+                        <img class='preview' [src]="imagePreview2" [alt]="form.value.image2"
+                            *ngIf="imagePreview2 !== '' && imagePreview2 && form.get('image2').valid">
+                        <input type="file" hidden #filePicker2 (change)="onImagePicked2($event)">
+
+                    </div>
+                    <div class="upload">
+                        <button mat-stroked-button type="button" (click)="filePicker3.click()">
+                            Image3
+                        </button>
+                        <img class='preview' [src]="imagePreview3" [alt]="form.value.image3"
+                            *ngIf="imagePreview3 !== '' && imagePreview3 && form.get('image3').valid">
+                        <input type="file" hidden #filePicker3 (change)="onImagePicked3($event)">
+
+                    </div>
                 </div>
-                <div class="upload">
-                    <button mat-stroked-button type="button" (click)="filePicker2.click()">
-                        Image2
-                    </button>
-                    <img class='preview' [src]="imagePreview2" [alt]="form.value.image2"
-                        *ngIf="imagePreview2 !== '' && imagePreview2 && form.get('image2').valid">
-                    <input type="file" #filePicker2 (change)="onImagePicked2($event)">
+                
+                <div class="next3" *ngIf="imagePreview3 !== '' && imagePreview3 && form.get('image3').valid &&
+                         imagePreview1 !== '' && imagePreview1 && form.get('image1').valid &&
+                         imagePreview2 !== '' && imagePreview2 && form.get('image2').valid">
 
-                </div>
-                <div class="upload">
-                    <button mat-stroked-button type="button" (click)="filePicker3.click()">
-                        Image3
-                    </button>
-                    <img class='preview' [src]="imagePreview3" [alt]="form.value.image3"
-                        *ngIf="imagePreview3 !== '' && imagePreview3 && form.get('image3').valid">
-                    <input type="file" #filePicker3 (change)="onImagePicked3($event)">
+                     <div class="upload">
+                        <button mat-stroked-button type="button" (click)="filePicker4.click()">
+                            Image4
+                        </button>
+                        <img class='preview' [src]="imagePreview4" [alt]="form.value.image4"
+                            *ngIf="imagePreview4 !== '' && imagePreview4 && form.get('image4').valid">
+                        <input type="file" hidden #filePicker4 (change)="onImagePicked4($event)">
 
-                </div>
-            </div>
+                    </div>
+                    <div class="upload">
+                        <button mat-stroked-button type="button" (click)="filePicker5.click()">
+                            Image5
+                        </button>
+                        <img class='preview' [src]="imagePreview5" [alt]="form.value.image5"
+                            *ngIf="imagePreview5 !== '' && imagePreview5 && form.get('image5').valid">
+                        <input type="file" hidden #filePicker5 (change)="onImagePicked5($event)">
 
-            <div class="next3">
+                    </div>
+                    <div class="upload">
+                        <button mat-stroked-button type="button" (click)="filePicker6.click()">
+                            Image6
+                        </button>
+                        <img class='preview' [src]="imagePreview6" [alt]="form.value.image6"
+                            *ngIf="imagePreview6 !== '' && imagePreview6 && form.get('image6').valid">
+                        <input type="file" hidden #filePicker6 (change)="onImagePicked6($event)">
 
-                <div class="upload">
-                    <button mat-stroked-button type="button" (click)="filePicker4.click()">
-                        Image4
-                    </button>
-                    <img class='preview' [src]="imagePreview4" [alt]="form.value.image4"
-                        *ngIf="imagePreview4 !== '' && imagePreview4 && form.get('image4').valid">
-                    <input type="file" #filePicker4 (change)="onImagePicked4($event)">
-
-                </div>
-                <div class="upload">
-                    <button mat-stroked-button type="button" (click)="filePicker5.click()">
-                        Image5
-                    </button>
-                    <img class='preview' [src]="imagePreview5" [alt]="form.value.image5"
-                        *ngIf="imagePreview5 !== '' && imagePreview5 && form.get('image5').valid">
-                    <input type="file" #filePicker5 (change)="onImagePicked5($event)">
-
-                </div>
-                <div class="upload">
-                    <button mat-stroked-button type="button" (click)="filePicker6.click()">
-                        Image6
-                    </button>
-                    <img class='preview' [src]="imagePreview6" [alt]="form.value.image6"
-                        *ngIf="imagePreview6 !== '' && imagePreview6 && form.get('image6').valid">
-                    <input type="file" #filePicker6 (change)="onImagePicked6($event)">
-
+                    </div>
                 </div>
             </div>
 
             <button mat-raised-button type="submit">Register</button>
-            <button mat-raised-button type="button" routerLink="../landing">Back</button>
-            
-           
-         
+            <button mat-raised-button type="button" (click)="back()">Back</button>
+
+
+
 
         </form>
     </div>

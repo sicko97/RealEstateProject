@@ -83,3 +83,16 @@
    
     overflow: hidden;
    }
+
+   @media only screen and (max-width: 800px) {
+    .filter-card{
+     width : 650px;
+   }
+   .location{
+    flex-direction: column;
+  }
+  .additional{
+    flex-direction: column;
+  }
+   
+}

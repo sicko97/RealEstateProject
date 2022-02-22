@@ -114,6 +114,9 @@ let House = new Schema({
     },
     sold: {
         type: Boolean
+    },
+    avgPrice: {
+        type: Number
     }
 });
 exports.default = mongoose_1.default.model('House', House, 'realestate');

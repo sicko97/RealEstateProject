@@ -47,19 +47,13 @@
     
     .example-full-width {
         width: 300px;
-      }
-
-  
-  
-
-    
+      } 
     button { 
         width : 100px;
         color : rgb(19, 2, 2);
         background-color: rgb(212, 211, 211);
         border :10px;
-        margin : 8px;
-      
+        margin : 8px;  
     }
     
 .logo{
@@ -74,19 +68,13 @@
       color : red;
   }
 
-  input[type="file"]{
-      visibility:hidden;
-  }
-
   .preview{
       height: 4rem;
       width : 5rem;
      margin-left: 0.5rem 0;
   }
 
-  .upload{
-      padding-left: 40px;
-  }
+  
   
   hr {
     border: 0;
@@ -100,3 +88,42 @@
   .mat-checkbox{
       margin : 10px;
   }
+
+  .images{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+  }
+
+
+  @media only screen and (max-width: 800px) {
+  .loginForm{
+      height: 1850px;
+  }
+
+  h1{
+      font-size: 20pt;
+  }
+  .preview{
+    height: 2rem;
+    width : 2rem;
+   margin-left: 0.0rem 0;
+}
+button { 
+   
+    margin : 5px;  
+}
+.mat-checkbox{
+    margin : 4px;
+}
+.inputText {
+    width: 250px;
+    padding : 6px;
+    margin: 1px;
+    opacity: 1;
+}
+.images{
+    flex-direction: row;
+}
+   
+}

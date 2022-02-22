@@ -83,4 +83,19 @@
   span{
       color :red;
   }
+
+  @media only screen and (max-width: 800px) {
+    .inputText {
+        width: 150px;
+        padding : 10px;
+        opacity: 1;
+    }
+    .logo{
+        visibility: hidden;
+    }
+    h1{
+        font-size: 25pt;
+    }
+
+  }
   

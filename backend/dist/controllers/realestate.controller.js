@@ -57,7 +57,8 @@ class RealEstateController {
                 image4: url + "/images/" + this.image4,
                 image5: url + "/images/" + this.image5,
                 image6: url + "/images/" + this.image6,
-                seller: req.body.seller
+                seller: req.body.seller,
+                sold: req.body.sold
             });
             console.log("doslo do registracije");
             house.save().then(house => {
@@ -79,7 +80,7 @@ class RealEstateController {
             });
         };
         this.getAll = (req, res) => {
-            house_1.default.find({}, (err, houses) => {
+            house_1.default.find({ 'sold': false }, (err, houses) => {
                 if (err) {
                     console.log(err);
                 }
@@ -97,12 +98,7 @@ class RealEstateController {
             let squareFootage = req.query.squareFootage;
             let rooms = req.query.rooms;
             let queryObj = {};
-            let filters = {
-                type: type,
-                city: city,
-                municipality: municipality,
-                microlocation: microlocation
-            };
+            queryObj.sold = false;
             // item = {};
             if (type != "undefined") {
                 queryObj.type = type;
@@ -136,7 +132,7 @@ class RealEstateController {
             });
         };
         this.getLastFive = (req, res) => {
-            house_1.default.find({}, null, { limit: 5, sort: { 'date': -1 } }, (err, houses) => {
+            house_1.default.find({ 'sold': false }, null, { limit: 5, sort: { 'date': -1 } }, (err, houses) => {
                 if (err) {
                     console.log(err);
                 }
@@ -160,6 +156,12 @@ class RealEstateController {
             let id = req.body.id;
             console.log(id);
             house_1.default.collection.updateOne({ _id: new mongoose_1.default.Types.ObjectId(id) }, { $set: { sold: true } });
+            res.json({ 'message': 'ok' });
+        };
+        this.updateAvgPrice = (req, res) => {
+            let id = req.body.id;
+            let avgPrice = req.body.avgPrice;
+            house_1.default.collection.updateOne({ _id: new mongoose_1.default.Types.ObjectId(id) }, { $set: { avgPrice: avgPrice } });
             res.json({ 'message': 'ok' });
         };
     }

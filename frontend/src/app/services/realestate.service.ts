@@ -9,12 +9,29 @@ export class RealestateService {
   constructor(private http: HttpClient) { }
 
   detailedRealEstateId: string;
+  avg : number;
 
   sell(id){
     const data = {
       id : id
     }
     return this.http.post('http://localhost:4000/realestate/sell',data);
+  }
+
+  updateAvgPrice(id,avgPrice){
+    const data = {
+      id : id,
+      avgPrice: avgPrice
+    }
+    return this.http.post('http://localhost:4000/realestate/updateAvgPrice',data);
+  }
+
+  setAvg(avg){
+      this.avg = avg;
+  }
+
+  getAvg():number{
+    return this.avg;
   }
 
   getAll() {

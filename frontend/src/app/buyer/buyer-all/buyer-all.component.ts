@@ -10,6 +10,7 @@ import { LocationService } from 'src/app/services/location.service';
 import { RealestateService } from 'src/app/services/realestate.service';
 import { Location } from 'src/app/models/location';
 import { Router } from '@angular/router';
+import { HouseDetailsComponent } from '../house-details/house-details.component';
 
 @Component({
   selector: 'app-buyer-all',
@@ -31,12 +32,13 @@ export class BuyerAllComponent implements OnInit {
   city: String;
   municipality: String;
   microlocation: String;
-  houseType : String[] = ['apartment', 'house','country house','locale','storage'];
+  houseType : String[] = ['Apartment', 'House','Country house','Locale','Storage'];
   rooms: Number[] = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
   room: Number;
   type: string;
   squareFootage: Number;
   maxPrice: Number;
+
 
   constructor(private realestateService: RealestateService,
     private changeDetectorRef: ChangeDetectorRef,
@@ -52,9 +54,26 @@ export class BuyerAllComponent implements OnInit {
     }
     );
 
+
     this.realestateService.getAll().subscribe((houses: House[]) => {
       this.DATA = houses;
       this.dataSource.data = this.DATA;
+
+      houses.forEach(house=>{
+        let sum = 0;
+         let num = 0;
+          houses.forEach(element=>{
+              if(element.type == house.type && element.microlocation == house.microlocation){
+               sum = sum + house.price/house.square;
+               num = num + 1;
+              }
+              house.avgPrice = Math.round(sum/num);
+              this.realestateService.updateAvgPrice(house._id,house.avgPrice).subscribe(()=>{
+
+              })
+          })
+      })
+
     })
 
     this.changeDetectorRef.detectChanges();
@@ -75,7 +94,11 @@ export class BuyerAllComponent implements OnInit {
     this.citySelected = true;
     this.locationService.getMunicipalities(this.city).subscribe((municipalities: Municipality[]) => {
       this.municipalities = municipalities;
+      this.municipalitySelected =false;
     })
+    this.municipality=undefined;
+    this.microlocation=undefined;
+    this.microlocations=undefined;
   }
 
 
@@ -85,6 +108,10 @@ export class BuyerAllComponent implements OnInit {
       this.microlocations = microlocations;
       this.microlocationSelected = true;
     })
+  }
+
+  changeMicrolocation(obj : MatSelectChange){
+
   }
 
   filter() {
@@ -100,7 +127,7 @@ export class BuyerAllComponent implements OnInit {
   })
 }
 
-details(_id){
+details(_id,avg){
     this.realestateService.setDetailedRealEstateId(_id);
     this.router.navigate(["buyer/houseDetails"]);
 }

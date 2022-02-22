@@ -20,18 +20,18 @@ export class RegisterComponent implements OnInit {
   approved = 0;
   type = 0;
   file = null;
-  captcha : boolean = false;
-  agencies : Agency[];
-  taken : boolean = false;
+  captcha: boolean = false;
+  agencies: Agency[];
+  taken: boolean = false;
 
   constructor(private router: Router,
-     private userService: UserService,
-     private adminService : AdminService) { }
+    private userService: UserService,
+    private adminService: AdminService) { }
 
   ngOnInit(): void {
 
-    this.adminService.getAll().subscribe((agencies:Agency[])=>{
-        this.agencies = agencies;
+    this.adminService.getAll().subscribe((agencies: Agency[]) => {
+      this.agencies = agencies;
     })
 
 
@@ -109,28 +109,45 @@ export class RegisterComponent implements OnInit {
   onToggle(ob: MatSlideToggleChange) {
     this.isChecked = !this.isChecked;
 
-     if (this.isChecked) {
-       this.type = 1;
-    //   this.form.get('agency').setValidators([Validators.required]);
-    //   this.form.get('licence').setValidators([Validators.required]);
-     } else {
-       this.type = 0;
-    //   this.form.get('agency').clearValidators();
-    //   this.form.get('licence').clearValidators();
-    // }
-    // this.form.get('agency').updateValueAndValidity();
-    // this.form.get('licence').updateValueAndValidity();
+    if (this.isChecked) {
+      this.type = 1;
+      //   this.form.get('agency').setValidators([Validators.required]);
+      //   this.form.get('licence').setValidators([Validators.required]);
+    } else {
+      this.type = 0;
+      //   this.form.get('agency').clearValidators();
+      //   this.form.get('licence').clearValidators();
+      // }
+      // this.form.get('agency').updateValueAndValidity();
+      // this.form.get('licence').updateValueAndValidity();
+    }
   }
-}
 
   onImagePicked(event: Event) {
     this.file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ image: this.file });
-    this.form.get('image').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file);
-    reader.onload = () => {
-      this.imagePreview = (reader.result as String);
+    let ext = (event.target as HTMLInputElement).files[0].name.match(/\.(.+)$/)[1];
+    if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file);
+      reader.onload = () => {
+
+        const img = new Image();
+        img.src = reader.result as string;
+        img.onload = () => {
+          const height = img.naturalHeight;
+          const width = img.naturalWidth;
+          console.log(width, height);
+          if (height >= 100 && height <= 300 && width >= 100 && width <= 300) {
+            this.form.patchValue({ image: this.file });
+            this.form.get('image').updateValueAndValidity();
+            this.imagePreview = (reader.result as String);
+          }
+        }
+
+
+      }
+
     }
   }
 
@@ -138,10 +155,10 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid || !this.captcha) {
       return
     } else {
-      this.userService.checkUsername(this.form.value.username).subscribe((user:User)=>{
-        if(user){
-            this.taken=true;
-        }else{
+      this.userService.checkUsername(this.form.value.username).subscribe((user: User) => {
+        if (user) {
+          this.taken = true;
+        } else {
           this.userService.register(this.form.value.firstname, this.form.value.lastname, this.form.value.username,
             this.form.value.password, this.form.value.city, this.form.value.birthday, this.form.value.phone, this.form.value.email,
             this.form.value.agency, this.form.value.licence, this.type, this.form.value.image, this.approved).subscribe((resp) => {
@@ -149,7 +166,7 @@ export class RegisterComponent implements OnInit {
             });
         }
       })
-   
+
 
     }
   }

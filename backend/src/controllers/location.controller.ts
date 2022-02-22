@@ -38,7 +38,7 @@ export class LocationController {
     }
 
     getMunicipalities = (req: express.Request, res: express.Response) => {
-        let city = req.params.city;
+        let city = req.query.city;
         Municipality.find({ 'city': city }, (err, municipalities) => {
             if (err) {
                 console.log(err);
@@ -48,13 +48,13 @@ export class LocationController {
         })
     }
 
-    getMicrolocation = (req : express.Request , res : express.Response)=>{
-        let city = req.params.city;
-        let municipality = req.params.municipality;
-        Location.find({'city' : city , 'municipality':municipality},(err,microlocations)=>{
-            if(err){
+    getMicrolocation = (req: express.Request, res: express.Response) => {
+        let city = req.query.city;
+        let municipality = req.query.municipality;
+        Location.find({ 'city': city, 'municipality': municipality }, (err, microlocations) => {
+            if (err) {
                 console.log(err);
-            }else{
+            } else {
                 res.json(microlocations);
             }
         })
@@ -63,17 +63,29 @@ export class LocationController {
     }
 
     addLocation = (req: express.Request, res: express.Response) => {
-     
+
         let location = new Location({
-            city : req.body.city,
-            municipality : req.body.municipality,
-            microlocation : req.body.microlocation
+            city: req.body.city,
+            municipality: req.body.municipality,
+            microlocation: req.body.microlocation
         })
         console.log("doslo do registracije");
         location.save().then(location => {
             res.status(200).json({ 'message': 'location added' })
         }).catch(err => {
             res.status(400).json({ 'message': err })
+        })
+
+    }
+
+    getAllMunicipalities = (req: express.Request, res: express.Response) => {
+
+        Municipality.find({}, (err, municipalities) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(municipalities);
+            }
         })
 
     }

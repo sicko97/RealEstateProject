@@ -17,6 +17,8 @@ import { textChangeRangeIsUnchanged } from 'typescript';
 export class HouseDetailsComponent implements OnInit {
 
   houseId: string;
+  avgPrice: number;
+  squarePrice: number;
   house: House;
   seller: User;
   agency: Agency;
@@ -31,6 +33,7 @@ export class HouseDetailsComponent implements OnInit {
   internet: boolean;
   intercom: boolean;
   phone: boolean;
+  panelOpenState: boolean = false;
 
   constructor(private realEstateService: RealestateService,
     private router: Router,
@@ -40,6 +43,9 @@ export class HouseDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     this.houseId = this.realEstateService.getDetailedRealEstateId();
+
+
+
 
     this.realEstateService.getRealEstateById(this.houseId).subscribe((house: House) => {
       this.house = house;
@@ -54,16 +60,23 @@ export class HouseDetailsComponent implements OnInit {
       this.internet = house.internet;
       this.phone = house.phone;
       this.intercom = house.intercom;
+      this.squarePrice = Math.round(house.price / house.square);
+      this.avgPrice = house.avgPrice;
+      for (let i = 0; i < 100000; i++) {
+        for (let j = 0; j < 10000; j++) {
 
+        }
+      }
       this.userService.checkUsername(this.house.seller).subscribe((user: User) => {
 
         this.seller = user;
-        alert(user.agency);
-        this.adminService.getAgency(user.agency).subscribe((agency: Agency) => {
+   
+        this.adminService.getAgency(this.seller.agency).subscribe((agency: Agency) => {
           if (agency) {
             this.agency = agency;
+
           }
-          alert(this.agency.name);
+        
         })
       })
 

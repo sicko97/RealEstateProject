@@ -9,6 +9,7 @@ import { RealestateService } from 'src/app/services/realestate.service';
 import { mimeType } from '../../main/register/mime-type.validator';
 import { HouseJSON } from 'src/app/models/HouseJSON';
 import { ArrayJSON } from 'src/app/models/arrayJSON';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addhouse',
@@ -37,14 +38,16 @@ export class AddhouseComponent implements OnInit {
   rooms: Number[] = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
   municipalitySelected = false;
   microlocationSelected = false;
-  houseType: String[] = ['apartment', 'house', 'country house', 'locale', 'storage'];
+  houseType: String[] = ['Apartment', 'House', 'Country house', 'Locale', 'Storage'];
 
   //JSON
   houseJSON: HouseJSON;
   selectedFile;
 
 
-  constructor(private locationService: LocationService, private realEstateService: RealestateService) { }
+  constructor(private locationService: LocationService,
+    private realEstateService: RealestateService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -289,6 +292,8 @@ export class AddhouseComponent implements OnInit {
     this.citySelected = true;
     this.locationService.getMunicipalities(this.form.value.city).subscribe((municipalities: Municipality[]) => {
       this.municipalities = municipalities;
+      this.microlocations = undefined;
+      this.microlocationSelected = false;
     })
   }
 
@@ -310,9 +315,15 @@ export class AddhouseComponent implements OnInit {
         this.form.value.microlocation, this.form.value.street, this.form.value.price, this.form.value.square, this.form.value.state, this.form.value.year, this.form.value.heating,
         this.form.value.floor, this.form.value.maxfloor, this.form.value.desc, this.form.value.terrace, this.form.value.loggia, this.form.value.balcony, this.form.value.elevator,
         this.form.value.basement, this.form.value.garage, this.form.value.garden, this.form.value.ac, this.form.value.internet, this.form.value.intercom, this.form.value.phone,
-        this.form.value.image1, this.form.value.image2, this.form.value.image3, this.form.value.image4, this.form.value.image5, this.form.value.image6,JSON.parse(sessionStorage.getItem('user')).username,false).subscribe(() => {
+        this.form.value.image1, this.form.value.image2, this.form.value.image3, this.form.value.image4, this.form.value.image5, this.form.value.image6, JSON.parse(sessionStorage.getItem('user')).username, false).subscribe(() => {
 
         })
+      for (let i = 0; i < 100000; i++) {
+        for (let j = 0; j < 10000; j++) {
+
+        }
+      }
+      this.router.navigate(['/seller']);
     }
   }
 
@@ -324,6 +335,10 @@ export class AddhouseComponent implements OnInit {
       this.houseJSON = (JSON.parse(fileReader.result.toString()));
       alert(this.houseJSON.Realestate.Characteristics);
     }
+  }
+
+  back() {
+    this.router.navigate(['/seller']);
   }
 
 

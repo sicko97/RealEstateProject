@@ -18,24 +18,28 @@ export class LocationService {
     return this.http.get("http://localhost:4000/location/getcities");
   }
 
-  getMunicipalities(city) {
-    return this.http.get("http://localhost:4000/location/getmunicipalities/" + city);
+  getAllMunicipalities() {
+    return this.http.get("http://localhost:4000/location/getAllMunicipalities");
   }
 
-  getMicrolocations(city,municipality){
-      return this.http.get("http://localhost:4000/location/getmicro/" + city + "/" + municipality);
+  getMunicipalities(city) {
+    return this.http.get(`http://localhost:4000/location/getmunicipalities?city=${city}`);
+  }
+
+  getMicrolocations(city, municipality) {
+    return this.http.get(`http://localhost:4000/location/getmicro?city=${city}&municipality=${municipality}`);
   }
 
   delete(location) {
     return this.http.delete("http://localhost:4000/location/delete/" + location);
   }
 
-  add(city, municipality,microlocation) {
+  add(city, municipality, microlocation) {
 
     const data = {
       city: city,
       municipality: municipality,
-      microlocation : microlocation
+      microlocation: microlocation
     }
     return this.http.post("http://localhost:4000/location/add", data);
 

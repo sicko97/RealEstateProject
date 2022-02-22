@@ -13,3 +13,9 @@ table {
 .waiting {
     color : orange;
 }
+
+.background{
+    background-image: url("/assets/high-resolution-new-york-city-skyline-panorama-vast-xl.jpg");
+    background-size:cover;
+    height : 55%;
+}
